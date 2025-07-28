@@ -4,21 +4,14 @@ const DataProviders = () => {
       name: "Binance",
       logo: (
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-3 relative">
-            {/* Binance logo recreation */}
-            <svg viewBox="0 0 32 32" className="w-full h-full">
-              <g fill="currentColor" className="text-primary">
-                {/* Top diamond */}
-                <polygon points="16,2 20,6 16,10 12,6" />
-                {/* Left diamond */}
-                <polygon points="6,12 10,8 14,12 10,16" />
-                {/* Center diamond */}
-                <polygon points="16,12 20,8 24,12 20,16" />
-                {/* Right diamond */}
-                <polygon points="26,12 30,8 26,4 22,8" />
-                {/* Bottom diamond */}
-                <polygon points="16,22 20,18 24,22 20,26" />
-                <polygon points="16,22 12,18 8,22 12,26" />
+          <div className="w-8 h-8 mr-3">
+            <svg viewBox="0 0 126.61 126.61" className="w-full h-full text-primary">
+              <g fill="currentColor">
+                <path d="M38.67 68.25L63.3 43.63l24.63 24.62L100.48 55.7L63.3 18.52L26.12 55.7l12.55 12.55z"/>
+                <path d="M13.06 63.3l12.55-12.55L38.16 63.3L25.61 75.85L13.06 63.3z"/>
+                <path d="M38.67 58.35L63.3 83l24.63-24.65L100.48 70.9L63.3 108.08L26.12 70.9l12.55-12.55z"/>
+                <path d="M113.54 63.3L101 75.85L88.44 63.3L101 50.75l12.54 12.55z"/>
+                <path d="M77.83 63.3L63.3 48.77L52.36 59.71L48.77 63.3l14.53 14.53L77.83 63.3z"/>
               </g>
             </svg>
           </div>
