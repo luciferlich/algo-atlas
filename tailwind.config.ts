@@ -107,10 +107,12 @@ export default {
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-secondary': 'var(--gradient-secondary)',
-				'gradient-dark': 'var(--gradient-dark)'
+				'gradient-dark': 'var(--gradient-dark)',
+				'gradient-green': 'var(--gradient-green)'
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
+				'green-glow': 'var(--shadow-green-glow)',
 				'card': 'var(--shadow-card)'
 			}
 		}

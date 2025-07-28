@@ -55,6 +55,9 @@ const ModelShowcase = () => {
     <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-4 mb-16">
+          <div className="terminal-text text-sm mb-2 uppercase tracking-[0.2em]">
+            /// MACHINE LEARNING SUITE
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold">
             Advanced ML Models
           </h2>
@@ -70,7 +73,7 @@ const ModelShowcase = () => {
             return (
               <Card 
                 key={model.id}
-                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group hover:shadow-card`}
+                className={`financial-card p-8 ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group hover:shadow-card`}
               >
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
