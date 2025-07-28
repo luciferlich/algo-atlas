@@ -23,8 +23,7 @@ const App = () => (
         <Route path="/volatility-modeling" component={VolatilityModeling} />
         <Route path="/portfolio-forecasting" component={PortfolioForecasting} />
         <Route path="/anomaly-detection" component={AnomalyDetection} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route component={NotFound} />
+        <Route path="*" component={NotFound} />
       </Router>
     </TooltipProvider>
   </QueryClientProvider>

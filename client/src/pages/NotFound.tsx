@@ -5,12 +5,7 @@ import { Link } from "wouter";
 const NotFound = () => {
   const [location] = useLocation();
 
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location
-    );
-  }, [location]);
+  // Removed console error logging
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">

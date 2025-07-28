@@ -123,11 +123,34 @@ All colors MUST be HSL.
 
 @layer components {
   .card-hover {
-    @apply transition-all duration-300 ease-in-out;
+    @apply transition-all duration-300 ease-in-out border border-border/50 bg-card;
   }
   
   .card-hover:hover {
     @apply border-primary shadow-xl;
     background: linear-gradient(135deg, hsl(45 100% 60% / 0.1), hsl(45 100% 75% / 0.05));
+    box-shadow: 0 0 30px hsl(45 100% 60% / 0.3);
+  }
+
+  .card-premium {
+    @apply transition-all duration-300 ease-in-out border border-primary/30 bg-gradient-to-br from-card to-background;
+  }
+  
+  .card-premium:hover {
+    @apply border-primary shadow-2xl;
+    background: linear-gradient(135deg, hsl(45 100% 60% / 0.15), hsl(45 100% 75% / 0.1));
+    box-shadow: 0 0 40px hsl(45 100% 60% / 0.4);
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(45 100% 60%), hsl(45 100% 75%));
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(135deg, hsl(0 0% 5%), hsl(0 0% 12%));
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(45 100% 50% / 0.1), hsl(45 100% 70% / 0.05));
   }
 }
