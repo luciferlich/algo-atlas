@@ -186,9 +186,27 @@ All colors MUST be HSL.
     box-shadow: 0 0 25px hsl(45 100% 60% / 0.5), 0 5px 15px -5px hsl(0 0% 0% / 0.4);
   }
 
-  /* Subtle glow for demo button */
+  /* Green gradient background popup effect for demo button */
+  .button-demo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.2));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .button-demo:hover::before {
+    opacity: 1;
+  }
+
   .button-demo:hover {
-    box-shadow: 0 0 20px hsl(215 16% 47% / 0.4), 0 5px 15px -5px hsl(0 0% 0% / 0.3);
+    box-shadow: 0 0 25px hsl(142 76% 36% / 0.4), 0 5px 20px -5px hsl(0 0% 0% / 0.3);
+    border-color: hsl(142 76% 46%);
   }
 
   /* Disable text selection and cursor across entire application */

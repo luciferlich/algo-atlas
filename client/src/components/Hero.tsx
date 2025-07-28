@@ -46,7 +46,7 @@ const Hero = () => {
             <Button variant="hero" size="lg" onClick={scrollToModels}>
               Start Analysis
             </Button>
-            <Button variant="outline" size="lg" className="border-slate-400 text-slate-300 hover:bg-slate-400/10 hover:text-white button-demo">
+            <Button variant="outline" size="lg" className="border-green-500/40 text-green-400 hover:text-white button-demo relative overflow-hidden transition-all duration-300">
               View Demo
             </Button>
           </div>
