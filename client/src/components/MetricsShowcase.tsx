@@ -11,10 +11,10 @@ const modelMetrics = [
     color: "text-red-400",
     borderColor: "border-red-800/30",
     techniques: [
-      { name: "LSTM Networks", accuracy: 87.3, color: "bg-red-500" },
-      { name: "ARIMA", accuracy: 82.1, color: "bg-red-400" },
-      { name: "Random Forest", accuracy: 79.8, color: "bg-red-300" },
-      { name: "Linear Regression", accuracy: 74.5, color: "bg-red-200" }
+      { name: "LSTM Networks", accuracy: 73.2, color: "bg-red-500" },
+      { name: "ARIMA", accuracy: 68.7, color: "bg-red-400" },
+      { name: "Random Forest", accuracy: 65.4, color: "bg-red-300" },
+      { name: "Linear Regression", accuracy: 62.1, color: "bg-red-200" }
     ]
   },
   {
@@ -24,10 +24,10 @@ const modelMetrics = [
     color: "text-blue-400",
     borderColor: "border-blue-800/30",
     techniques: [
-      { name: "LSTM Networks", accuracy: 91.2, color: "bg-blue-500" },
-      { name: "GARCH Models", accuracy: 88.7, color: "bg-blue-400" },
-      { name: "Attention Models", accuracy: 85.4, color: "bg-blue-300" },
-      { name: "Stochastic Volatility", accuracy: 81.9, color: "bg-blue-200" }
+      { name: "LSTM Networks", accuracy: 76.8, color: "bg-blue-500" },
+      { name: "GARCH Models", accuracy: 74.3, color: "bg-blue-400" },
+      { name: "Attention Models", accuracy: 71.9, color: "bg-blue-300" },
+      { name: "Stochastic Volatility", accuracy: 69.2, color: "bg-blue-200" }
     ]
   },
   {
@@ -37,10 +37,10 @@ const modelMetrics = [
     color: "text-green-400", 
     borderColor: "border-green-800/30",
     techniques: [
-      { name: "Value at Risk (VaR)", accuracy: 89.6, color: "bg-green-500" },
-      { name: "DeepAR", accuracy: 86.3, color: "bg-green-400" },
-      { name: "Transformer Models", accuracy: 84.1, color: "bg-green-300" },
-      { name: "Monte Carlo", accuracy: 80.7, color: "bg-green-200" }
+      { name: "Value at Risk (VaR)", accuracy: 72.4, color: "bg-green-500" },
+      { name: "DeepAR", accuracy: 69.8, color: "bg-green-400" },
+      { name: "Transformer Models", accuracy: 67.5, color: "bg-green-300" },
+      { name: "Monte Carlo", accuracy: 64.9, color: "bg-green-200" }
     ]
   },
   {
@@ -50,10 +50,10 @@ const modelMetrics = [
     color: "text-yellow-400",
     borderColor: "border-yellow-800/30", 
     techniques: [
-      { name: "Autoencoders", accuracy: 93.4, color: "bg-yellow-500" },
-      { name: "Isolation Forest", accuracy: 88.9, color: "bg-yellow-400" },
-      { name: "HDBSCAN", accuracy: 85.2, color: "bg-yellow-300" },
-      { name: "One-Class SVM", accuracy: 82.6, color: "bg-yellow-200" }
+      { name: "Autoencoders", accuracy: 78.6, color: "bg-yellow-500" },
+      { name: "Isolation Forest", accuracy: 75.1, color: "bg-yellow-400" },
+      { name: "HDBSCAN", accuracy: 72.8, color: "bg-yellow-300" },
+      { name: "One-Class SVM", accuracy: 70.3, color: "bg-yellow-200" }
     ]
   }
 ];
@@ -62,30 +62,30 @@ const technologyMetrics = [
   {
     name: "Machine Learning",
     icon: Cpu,
-    efficiency: 92.8,
+    efficiency: 78.4,
     color: "bg-purple-500",
-    description: "Advanced ML algorithms with high computational efficiency"
+    description: "Advanced ML algorithms with optimized computational efficiency"
   },
   {
     name: "Deep Learning", 
     icon: Brain,
-    efficiency: 89.5,
+    efficiency: 75.2,
     color: "bg-indigo-500",
-    description: "Neural networks delivering superior pattern recognition"
+    description: "Neural networks for complex pattern recognition"
   },
   {
     name: "Statistical Models",
     icon: BarChart3,
-    efficiency: 86.2,
+    efficiency: 81.6,
     color: "bg-cyan-500", 
-    description: "Classical statistical approaches with proven reliability"
+    description: "Classical statistical approaches with proven track record"
   },
   {
     name: "Real-time Analytics",
     icon: Zap,
-    efficiency: 94.1,
+    efficiency: 85.3,
     color: "bg-orange-500",
-    description: "High-speed processing for instant market insights"
+    description: "High-speed processing for timely market insights"
   }
 ];
 
@@ -195,17 +195,61 @@ const MetricsShowcase = () => {
               <h4 className="text-xl font-semibold mb-4">Overall Platform Performance</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <div className="text-2xl font-bold text-primary">89.2%</div>
+                  <div className="text-2xl font-bold text-primary">70.8%</div>
                   <div className="text-sm text-muted-foreground">Average Model Accuracy</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary">90.7%</div>
+                  <div className="text-2xl font-bold text-primary">80.1%</div>
                   <div className="text-sm text-muted-foreground">Technology Efficiency</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary">99.8%</div>
+                  <div className="text-2xl font-bold text-primary">99.7%</div>
                   <div className="text-sm text-muted-foreground">System Uptime</div>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Risk Disclaimer */}
+        <div className="mt-16">
+          <Card className="max-w-5xl mx-auto border-destructive/20 bg-gradient-to-br from-destructive/5 to-destructive/10">
+            <CardContent className="py-8">
+              <div className="text-center mb-6">
+                <h4 className="text-xl font-semibold text-destructive mb-2">⚠️ Important Risk Disclosure</h4>
+                <p className="text-sm text-muted-foreground">
+                  Financial modeling limitations and market unpredictability
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div className="space-y-3">
+                  <h5 className="font-semibold text-destructive">Model Limitations</h5>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Accuracy percentages are based on historical backtesting under normal market conditions</li>
+                    <li>• Models cannot predict black swan events, market crashes, or extreme volatility</li>
+                    <li>• Performance may significantly degrade during unprecedented market conditions</li>
+                    <li>• Past performance does not guarantee future results</li>
+                  </ul>
+                </div>
+                
+                <div className="space-y-3">
+                  <h5 className="font-semibold text-destructive">Unpredictable Events</h5>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Geopolitical crises and natural disasters</li>
+                    <li>• Central bank policy surprises and regulatory changes</li>
+                    <li>• Technological disruptions and market manipulation</li>
+                    <li>• Pandemic outbreaks and economic recessions</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="mt-6 p-4 bg-destructive/10 rounded-lg border border-destructive/20">
+                <p className="text-xs text-center text-muted-foreground">
+                  <strong>Disclaimer:</strong> AlgoAtlas models are tools for analysis and should not be the sole basis for investment decisions. 
+                  Always consult with qualified financial advisors and conduct your own research. 
+                  Markets are inherently unpredictable, and no model can account for all variables affecting financial instruments.
+                </p>
               </div>
             </CardContent>
           </Card>
