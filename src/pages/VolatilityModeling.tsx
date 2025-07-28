@@ -58,11 +58,8 @@ const VolatilityModeling = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="mb-4">
                     <Badge variant="secondary">{model.technique}</Badge>
-                    <div className="text-sm text-muted-foreground">
-                      Accuracy: <span className="text-primary font-semibold">{model.accuracy}</span>
-                    </div>
                   </div>
                   <Button className="w-full" variant="analytics">
                     Run Model
