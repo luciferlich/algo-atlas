@@ -129,6 +129,7 @@ All colors MUST be HSL.
   .card-hover:hover {
     @apply border-primary shadow-xl;
     background: linear-gradient(135deg, hsl(45 100% 60% / 0.1), hsl(45 100% 75% / 0.05));
+    box-shadow: 0 0 30px hsl(45 100% 60% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
   }
 
   .card-premium {
@@ -138,6 +139,7 @@ All colors MUST be HSL.
   .card-premium:hover {
     @apply border-primary shadow-2xl;
     background: linear-gradient(135deg, hsl(45 100% 60% / 0.15), hsl(45 100% 75% / 0.1));
+    box-shadow: 0 0 40px hsl(45 100% 60% / 0.4), 0 15px 40px -15px hsl(0 0% 0% / 0.9);
   }
 
   .bg-gradient-primary {
@@ -150,5 +152,18 @@ All colors MUST be HSL.
 
   .bg-gradient-gold {
     background: linear-gradient(135deg, hsl(45 100% 50% / 0.1), hsl(45 100% 70% / 0.05));
+  }
+
+  /* Button glow effects */
+  .button-hero:hover {
+    box-shadow: 0 0 25px hsl(45 100% 60% / 0.6), 0 5px 15px -5px hsl(0 0% 0% / 0.4);
+  }
+
+  .button-analytics:hover {
+    box-shadow: 0 0 20px hsl(45 100% 60% / 0.4), 0 5px 15px -5px hsl(0 0% 0% / 0.3);
+  }
+
+  .button-premium:hover {
+    box-shadow: 0 0 25px hsl(45 100% 60% / 0.5), 0 5px 15px -5px hsl(0 0% 0% / 0.4);
   }
 }
