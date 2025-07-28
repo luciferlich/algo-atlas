@@ -70,7 +70,7 @@ const ModelShowcase = () => {
             return (
               <Card 
                 key={model.id}
-                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group hover:shadow-card`}
+                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group card-hover`}
               >
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
@@ -92,7 +92,12 @@ const ModelShowcase = () => {
                         <Badge 
                           key={technique}
                           variant="secondary" 
-                          className="bg-secondary/50 hover:bg-secondary/70 transition-colors"
+                          className={`bg-secondary/50 hover:bg-secondary/70 transition-colors border border-opacity-30 ${
+                            model.id === 'prediction' ? 'border-red-400 text-red-300' :
+                            model.id === 'volatility' ? 'border-blue-400 text-blue-300' :
+                            model.id === 'portfolio' ? 'border-green-400 text-green-300' :
+                            'border-yellow-400 text-yellow-300'
+                          }`}
                         >
                           {technique}
                         </Badge>
