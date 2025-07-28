@@ -1,17 +1,18 @@
-import { Instagram, MessageCircle, Linkedin, Youtube, Twitter } from "lucide-react";
+import { Instagram, MessageCircle, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-black/90 border-t border-primary/10 mt-20">
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* AlgoAtlas Section */}
-          <div className="space-y-4">
-            <h3 className="text-primary font-bold text-xl">AlgoAtlas</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Unlock Smarter, Faster Trading with AI-Powered Financial Analytics Platform
-            </p>
-          </div>
+        {/* Centered AlgoAtlas Section */}
+        <div className="text-center mb-12">
+          <h3 className="text-primary font-bold text-xl">AlgoAtlas</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed mt-2">
+            Unlock Smarter, Faster Trading with AI-Powered Financial Analytics Platform
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
           {/* Connect Section */}
           <div className="space-y-4">
@@ -25,14 +26,7 @@ const Footer = () => {
                 <MessageCircle className="h-4 w-4" />
                 <span className="text-sm">Discord Server</span>
               </a>
-              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-4 w-4" />
-                <span className="text-sm">X/Twitter</span>
-              </a>
-              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-4 w-4" />
-                <span className="text-sm">LinkedIn</span>
-              </a>
+
               <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
                 <Youtube className="h-4 w-4" />
                 <span className="text-sm">YouTube</span>
@@ -78,7 +72,7 @@ const Footer = () => {
 
         {/* Disclaimer Section */}
         <div className="mt-12 pt-8 border-t border-primary/10">
-          <p className="text-muted-foreground text-xs leading-relaxed">
+          <p className="text-muted-foreground/70 text-[10px] leading-relaxed">
             Disclaimer: AlgoAtlas is a financial analytics and AI-powered platform. We are not a brokerage, investment advisor, or financial institution. The platform provides AI-powered analysis of market events and economic data for informational purposes only. We do not provide financial advice, investment recommendations, or trading signals. The insights and analysis provided through our platform should not be considered as certified financial guidance or professional advice without advice. Users should conduct their own research and consult with qualified financial professionals before making any investment decisions. All platform features and analysis are provided "as is" without any guarantees of accuracy or specific trading outcomes. All sales are final, and we do not offer refunds.
           </p>
         </div>
