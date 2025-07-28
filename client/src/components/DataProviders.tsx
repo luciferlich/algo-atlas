@@ -49,7 +49,7 @@ const DataProviders = () => {
                 alt={provider.name}
                 className="h-8 w-auto"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(79%) sepia(97%) saturate(1134%) hue-rotate(3deg) brightness(107%) contrast(101%)'
+                  filter: 'brightness(0) saturate(100%) invert(85%) sepia(58%) saturate(2776%) hue-rotate(3deg) brightness(102%) contrast(104%)'
                 }}
               />
             </div>
@@ -65,7 +65,7 @@ const DataProviders = () => {
                 alt={provider.name}
                 className="h-8 w-auto"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(79%) sepia(97%) saturate(1134%) hue-rotate(3deg) brightness(107%) contrast(101%)'
+                  filter: 'brightness(0) saturate(100%) invert(85%) sepia(58%) saturate(2776%) hue-rotate(3deg) brightness(102%) contrast(104%)'
                 }}
               />
             </div>
