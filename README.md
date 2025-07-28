@@ -1,6 +1,6 @@
 # AlgoAtlas - Financial Analytics Platform
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-gold?style=for-the-badge)](https://your-replit-deployment-url.replit.app)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-gold?style=for-the-badge)](https://algoatlas.replit.app)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -8,9 +8,9 @@
 
 ## 🚀 Live Demo
 
-**[View Live Demo](https://your-replit-deployment-url.replit.app)**
+**[View Live Demo](https://algoatlas.replit.app)**
 
-> *Replace the URL above with your actual Replit deployment URL*
+> Experience the full AlgoAtlas financial analytics platform with real-time ML models and Monte Carlo simulations
 
 ## 📊 Overview
 
@@ -110,54 +110,70 @@ algoatlas/
 
 ## 🔗 API Endpoints
 
-### Models
-- `GET /api/models` - Get available ML models
-- `POST /api/models/predict` - Run price predictions
-- `POST /api/models/volatility` - Analyze volatility
-- `POST /api/models/portfolio` - Portfolio optimization
+### Price Prediction Models
+- `POST /api/models/price/predict` - LSTM, ARIMA, Random Forest, Linear Regression predictions
+- Features: Technical analysis, trend detection, confidence intervals
 
-### Simulations
-- `POST /api/simulations/monte-carlo` - Run Monte Carlo simulations
+### Volatility Modeling
+- `POST /api/models/volatility/predict` - GARCH, LSTM, Attention-based volatility forecasting
+- Capabilities: Risk assessment, regime detection, volatility decomposition
+
+### Portfolio Forecasting
+- `POST /api/models/portfolio/forecast` - VaR, DeepAR, Transformer portfolio analysis
+- Metrics: Sharpe ratio, VaR/CVaR, scenario analysis, risk attribution
+
+### Anomaly Detection
+- `POST /api/models/anomaly/detect` - Autoencoder, Isolation Forest, HDBSCAN, One-Class SVM
+- `POST /api/models/anomaly/train` - Train anomaly detection models
+- Detection: Price spikes, volume surges, pattern breaks, market stress
+
+### Monte Carlo Simulations
+- `POST /api/simulations/monte-carlo` - Advanced portfolio simulations
 - `GET /api/simulations/results/:id` - Get simulation results
+- Models: Geometric Brownian Motion, Jump Diffusion, Mean Reversion
 
-### Training
-- `POST /api/training/start` - Start ML model training
-- `GET /api/training/status/:id` - Check training status
+### ML Training Pipeline
+- `POST /api/training/start` - Start model training sessions
+- `GET /api/training/status/:id` - Monitor training progress
+- `GET /api/training/sessions` - List all training sessions
+
+### Portfolio Optimization
+- `POST /api/portfolio/optimize` - Multi-objective portfolio optimization
+- Constraints: Min variance, max Sharpe, risk parity, target return
+
+### System Health
+- `GET /api/health` - System status and service health
+- `GET /api/models` - Complete model catalog with capabilities
 
 ## 🧪 ML Models & Simulations
 
-### Supported Models
+### Price Prediction Models
+- **LSTM Neural Networks**: Deep learning for complex temporal patterns
+- **ARIMA**: Statistical time series forecasting with trend and seasonality
+- **Random Forest**: Ensemble learning with feature importance analysis
+- **Linear Regression**: Baseline model with interpretable coefficients
 
-1. **Price Prediction**
-   - LSTM Neural Networks
-   - ARIMA Time Series
-   - Random Forest Regression
-   - Linear Regression
+### Volatility Modeling
+- **GARCH**: Heteroskedastic time series for volatility clustering
+- **LSTM Volatility**: Neural networks for regime-dependent volatility
+- **Attention Models**: Transformer-based volatility with temporal attention
 
-2. **Volatility Modeling**
-   - GARCH Models
-   - Attention-Based Networks
-   - Stochastic Volatility Models
+### Portfolio Forecasting
+- **Value at Risk (VaR)**: Risk metrics with confidence intervals
+- **DeepAR**: Probabilistic forecasting with uncertainty quantification
+- **Transformer Models**: Multi-asset attention mechanisms for portfolio dynamics
 
-3. **Portfolio Optimization**
-   - Monte Carlo Simulations
-   - Value at Risk (VaR)
-   - Modern Portfolio Theory
-   - Black-Litterman Model
+### Anomaly Detection
+- **Autoencoders**: Neural reconstruction for pattern anomalies
+- **Isolation Forest**: Tree-based outlier detection for financial data
+- **HDBSCAN**: Density-based clustering for regime changes
+- **One-Class SVM**: Support vector machines for normal behavior modeling
 
-4. **Anomaly Detection**
-   - Autoencoder Networks
-   - Isolation Forest
-   - HDBSCAN Clustering
-   - One-Class SVM
-
-### Monte Carlo Simulations
-
-The platform includes a sophisticated Monte Carlo simulation engine for:
-- Portfolio risk assessment
-- Option pricing
-- Stress testing
-- Scenario analysis
+### Advanced Simulations
+- **Geometric Brownian Motion**: Standard financial modeling
+- **Jump Diffusion**: Market stress and shock modeling
+- **Mean Reversion**: Long-term equilibrium models
+- **Portfolio Simulation**: Multi-asset correlated scenarios
 
 ## 🎨 Design System
 

@@ -4,6 +4,10 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { mlTrainingService, mlPredictionService, PredictionRequest } from "./ml/index";
 import { monteCarloService, portfolioOptimizer, MonteCarloConfig, PortfolioOptimizationConfig } from "./simulations/monteCarlo";
+import { priceModelService } from "./ml/models/priceModels";
+import { volatilityModelService } from "./ml/models/volatilityModels";
+import { portfolioModelService } from "./ml/models/portfolioModels";
+import { anomalyDetectionService, MarketData } from "./ml/models/anomalyModels";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // ML Training Routes
@@ -145,42 +149,140 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Advanced Model Routes - Price Prediction
+  const PriceModelConfigSchema = z.object({
+    symbol: z.string(),
+    timeframe: z.enum(['1m', '5m', '15m', '1h', '4h', '1d']),
+    lookbackPeriod: z.number(),
+    features: z.array(z.enum(['price', 'volume', 'rsi', 'macd', 'bb', 'sma', 'ema'])),
+    modelParams: z.record(z.any()).optional()
+  });
+
+  app.post("/api/models/price/predict", async (req, res) => {
+    try {
+      const { modelType, data, config } = req.body;
+      const validatedConfig = PriceModelConfigSchema.parse(config);
+      const prediction = await priceModelService.predict(modelType, data, validatedConfig);
+      res.json(prediction);
+    } catch (error) {
+      res.status(400).json({ error: 'Invalid price model request' });
+    }
+  });
+
+  // Volatility Model Routes
+  const VolatilityModelConfigSchema = z.object({
+    symbol: z.string(),
+    timeframe: z.enum(['1m', '5m', '15m', '1h', '4h', '1d']),
+    lookbackPeriod: z.number(),
+    modelParams: z.record(z.any()).optional()
+  });
+
+  app.post("/api/models/volatility/predict", async (req, res) => {
+    try {
+      const { modelType, returns, config } = req.body;
+      const validatedConfig = VolatilityModelConfigSchema.parse(config);
+      const prediction = await volatilityModelService.predict(modelType, returns, validatedConfig);
+      res.json(prediction);
+    } catch (error) {
+      res.status(400).json({ error: 'Invalid volatility model request' });
+    }
+  });
+
+  // Portfolio Model Routes
+  const PortfolioModelConfigSchema = z.object({
+    assets: z.array(z.object({
+      symbol: z.string(),
+      weight: z.number(),
+      expectedReturn: z.number(),
+      volatility: z.number(),
+      beta: z.number(),
+      priceHistory: z.array(z.number())
+    })),
+    timeHorizon: z.number(),
+    confidenceLevel: z.number(),
+    rebalanceFrequency: z.enum(['daily', 'weekly', 'monthly', 'quarterly']),
+    benchmarkSymbol: z.string().optional(),
+    riskFreeRate: z.number()
+  });
+
+  app.post("/api/models/portfolio/forecast", async (req, res) => {
+    try {
+      const { modelType, config } = req.body;
+      const validatedConfig = PortfolioModelConfigSchema.parse(config);
+      const forecast = await portfolioModelService.predict(modelType, validatedConfig);
+      res.json(forecast);
+    } catch (error) {
+      res.status(400).json({ error: 'Invalid portfolio model request' });
+    }
+  });
+
+  // Anomaly Detection Routes
+  const AnomalyModelConfigSchema = z.object({
+    symbol: z.string(),
+    features: z.array(z.enum(['price', 'volume', 'returns', 'volatility', 'rsi', 'macd', 'volume_profile'])),
+    sensitivity: z.enum(['low', 'medium', 'high']),
+    lookbackPeriod: z.number(),
+    contaminationRate: z.number()
+  });
+
+  const MarketDataSchema = z.object({
+    timestamp: z.string().transform(str => new Date(str)),
+    price: z.number(),
+    volume: z.number(),
+    high: z.number(),
+    low: z.number(),
+    open: z.number(),
+    close: z.number()
+  });
+
+  app.post("/api/models/anomaly/detect", async (req, res) => {
+    try {
+      const { modelType, data, config } = req.body;
+      const validatedConfig = AnomalyModelConfigSchema.parse(config);
+      const validatedData: MarketData[] = z.array(MarketDataSchema).parse(data);
+      const detection = await anomalyDetectionService.detect(modelType, validatedData, validatedConfig);
+      res.json(detection);
+    } catch (error) {
+      res.status(400).json({ error: 'Invalid anomaly detection request' });
+    }
+  });
+
+  app.post("/api/models/anomaly/train", async (req, res) => {
+    try {
+      const { modelType, data, config } = req.body;
+      const validatedConfig = AnomalyModelConfigSchema.parse(config);
+      const validatedData: MarketData[] = z.array(MarketDataSchema).parse(data);
+      await anomalyDetectionService.trainModel(modelType, validatedData, validatedConfig);
+      res.json({ status: 'training_completed' });
+    } catch (error) {
+      res.status(400).json({ error: 'Invalid anomaly training request' });
+    }
+  });
+
   // Model Information Routes
   app.get("/api/models", (req, res) => {
-    const models = [
-      {
-        id: 'lstm',
-        name: 'LSTM Neural Network',
-        description: 'Long Short-Term Memory networks for time series prediction',
-        category: 'deep_learning',
-        inputFeatures: ['price', 'volume', 'technical_indicators'],
-        outputType: 'continuous'
-      },
-      {
-        id: 'arima',
-        name: 'ARIMA',
-        description: 'Autoregressive Integrated Moving Average for time series forecasting',
-        category: 'statistical',
-        inputFeatures: ['price'],
-        outputType: 'continuous'
-      },
-      {
-        id: 'random_forest',
-        name: 'Random Forest',
-        description: 'Ensemble learning method for classification and regression',
-        category: 'machine_learning',
-        inputFeatures: ['price', 'volume', 'technical_indicators', 'fundamentals'],
-        outputType: 'continuous'
-      },
-      {
-        id: 'garch',
-        name: 'GARCH',
-        description: 'Generalized Autoregressive Conditional Heteroskedasticity for volatility modeling',
-        category: 'statistical',
-        inputFeatures: ['returns'],
-        outputType: 'volatility'
-      }
-    ];
+    const models = {
+      priceModels: priceModelService.getSupportedModels().map(model => ({
+        id: model,
+        category: 'price_prediction',
+        capabilities: ['prediction', 'trend_analysis', 'technical_signals']
+      })),
+      volatilityModels: volatilityModelService.getSupportedModels().map(model => ({
+        id: model,
+        category: 'volatility_modeling',
+        capabilities: ['volatility_forecast', 'risk_assessment', 'regime_detection']
+      })),
+      portfolioModels: portfolioModelService.getSupportedModels().map(model => ({
+        id: model,
+        category: 'portfolio_forecasting',
+        capabilities: ['portfolio_optimization', 'risk_metrics', 'scenario_analysis']
+      })),
+      anomalyModels: anomalyDetectionService.getSupportedModels().map(model => ({
+        id: model,
+        category: 'anomaly_detection',
+        capabilities: ['anomaly_detection', 'risk_assessment', 'pattern_analysis']
+      }))
+    };
     
     res.json(models);
   });
