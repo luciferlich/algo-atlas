@@ -44,12 +44,18 @@ const DataProviders = () => {
               key={`set1-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <img 
-                src={provider.logo} 
-                alt={provider.name}
-                className="h-8 w-auto"
+              <div 
+                className="h-8 bg-primary"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(84%) sepia(78%) saturate(6833%) hue-rotate(3deg) brightness(101%) contrast(108%)'
+                  maskImage: `url(${provider.logo})`,
+                  maskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  WebkitMaskImage: `url(${provider.logo})`,
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  width: '120px'
                 }}
               />
             </div>
@@ -60,12 +66,18 @@ const DataProviders = () => {
               key={`set2-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <img 
-                src={provider.logo} 
-                alt={provider.name}
-                className="h-8 w-auto"
+              <div 
+                className="h-8 bg-primary"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(84%) sepia(78%) saturate(6833%) hue-rotate(3deg) brightness(101%) contrast(108%)'
+                  maskImage: `url(${provider.logo})`,
+                  maskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  WebkitMaskImage: `url(${provider.logo})`,
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  width: '120px'
                 }}
               />
             </div>
