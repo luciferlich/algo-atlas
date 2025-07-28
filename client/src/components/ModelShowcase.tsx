@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, BarChart3, Brain, Shield, ChevronRight } from "lucide-react";
+import { useLocation } from "wouter";
 
 const models = [
   {
@@ -13,7 +14,8 @@ const models = [
     color: "text-red-400",
     gradient: "from-red-950/40 to-red-900/20",
     borderColor: "border-red-800/30",
-    hoverBorder: "hover:border-red-600"
+    hoverBorder: "hover:border-red-600",
+    route: "/price-prediction"
   },
   {
     id: "volatility", 
@@ -24,7 +26,8 @@ const models = [
     color: "text-blue-400",
     gradient: "from-blue-950/40 to-blue-900/20",
     borderColor: "border-blue-800/30",
-    hoverBorder: "hover:border-blue-600"
+    hoverBorder: "hover:border-blue-600",
+    route: "/volatility-modeling"
   },
   {
     id: "portfolio",
@@ -35,7 +38,8 @@ const models = [
     color: "text-green-400",
     gradient: "from-green-950/40 to-green-900/20",
     borderColor: "border-green-800/30",
-    hoverBorder: "hover:border-green-600"
+    hoverBorder: "hover:border-green-600",
+    route: "/portfolio-forecasting"
   },
   {
     id: "anomaly",
@@ -46,11 +50,18 @@ const models = [
     color: "text-yellow-400",
     gradient: "from-yellow-950/40 to-amber-900/20",
     borderColor: "border-yellow-800/30",
-    hoverBorder: "hover:border-yellow-600"
+    hoverBorder: "hover:border-yellow-600",
+    route: "/anomaly-detection"
   }
 ];
 
 const ModelShowcase = () => {
+  const [, setLocation] = useLocation();
+
+  const handleExploreModel = (route: string) => {
+    setLocation(route);
+  };
+
   return (
     <section className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -113,6 +124,7 @@ const ModelShowcase = () => {
                   <Button 
                     variant="analytics" 
                     className="w-full group-hover:bg-primary/20"
+                    onClick={() => handleExploreModel(model.route)}
                   >
                     Explore Model
                     <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
