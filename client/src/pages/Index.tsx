@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import ModelShowcase from "@/components/ModelShowcase";
+import MetricsShowcase from "@/components/MetricsShowcase";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -9,6 +10,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <ModelShowcase />
+      <MetricsShowcase />
       <Footer />
     </div>
   );
