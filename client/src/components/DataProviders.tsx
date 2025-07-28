@@ -1,24 +1,30 @@
+import coinGeckoLogo from "@assets/image_1753718286954.png";
+import coinMarketCapLogo from "@assets/image_1753718339755.png";
+import kucoinLogo from "@assets/image_1753718391863.png";
+import coinbaseLogo from "@assets/image_1753718418904.png";
+import binanceLogo from "@assets/image_1753718449889.png";
+
 const DataProviders = () => {
   const cryptoProviders = [
     {
       name: "Binance",
-      textStyle: "font-black text-2xl tracking-tight"
+      logo: binanceLogo
     },
     {
       name: "KuCoin", 
-      textStyle: "font-bold text-2xl tracking-wide"
+      logo: kucoinLogo
     },
     {
       name: "CoinGecko",
-      textStyle: "font-bold text-2xl tracking-normal"
+      logo: coinGeckoLogo
     },
     {
       name: "CoinMarketCap",
-      textStyle: "font-semibold text-xl tracking-wide"
+      logo: coinMarketCapLogo
     },
     {
       name: "Coinbase",
-      textStyle: "font-medium text-2xl tracking-wide"
+      logo: coinbaseLogo
     }
   ];
 
@@ -38,9 +44,14 @@ const DataProviders = () => {
               key={`set1-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <span className={`text-primary ${provider.textStyle}`}>
-                {provider.name}
-              </span>
+              <img 
+                src={provider.logo} 
+                alt={provider.name}
+                className="h-8 w-auto"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(84%) sepia(48%) saturate(2020%) hue-rotate(15deg) brightness(106%) contrast(106%)'
+                }}
+              />
             </div>
           ))}
           {/* Second set for seamless loop */}
@@ -49,9 +60,14 @@ const DataProviders = () => {
               key={`set2-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <span className={`text-primary ${provider.textStyle}`}>
-                {provider.name}
-              </span>
+              <img 
+                src={provider.logo} 
+                alt={provider.name}
+                className="h-8 w-auto"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(84%) sepia(48%) saturate(2020%) hue-rotate(15deg) brightness(106%) contrast(106%)'
+                }}
+              />
             </div>
           ))}
         </div>
