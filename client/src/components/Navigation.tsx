@@ -32,26 +32,26 @@ const Navigation = () => {
                 Models <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-black/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-lg p-1 min-w-[200px]">
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/price-prediction" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/price-prediction" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                     <TrendingUp className="w-4 h-4 mr-2 inline-block" />
                     Price Prediction
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/volatility-modeling" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/volatility-modeling" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                     <BarChart3 className="w-4 h-4 mr-2 inline-block" />
                     Volatility Modeling
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/portfolio-forecasting" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/portfolio-forecasting" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                     <Brain className="w-4 h-4 mr-2 inline-block" />
                     Portfolio Forecasting
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/anomaly-detection" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/anomaly-detection" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                     <AlertTriangle className="w-4 h-4 mr-2 inline-block" />
                     Anomaly Detection
                   </Link>
@@ -64,19 +64,19 @@ const Navigation = () => {
                 Technology <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-black/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-lg p-1 min-w-[200px]">
-                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                   <Brain className="w-4 h-4 mr-2" />
                   Machine Learning
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                   <Brain className="w-4 h-4 mr-2" />
                   Deep Learning
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                   <BarChart3 className="w-4 h-4 mr-2" />
                   Statistical Models
                 </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                <DropdownMenuItem className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-yellow-300">
                   <BarChart3 className="w-4 h-4 mr-2" />
                   Real-time Analytics
                 </DropdownMenuItem>
@@ -88,26 +88,26 @@ const Navigation = () => {
                 Company <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-black/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-lg p-1 min-w-[200px]">
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/about" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/about" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300 flex items-center">
                     <BarChart3 className="w-4 h-4 mr-2" />
                     About
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/research" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/research" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300 flex items-center">
                     <Brain className="w-4 h-4 mr-2" />
                     Research
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/contact" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/contact" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300 flex items-center">
                     <BarChart3 className="w-4 h-4 mr-2" />
                     Contact
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
-                  <Link href="/documentation" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                <DropdownMenuItem asChild className="hover:bg-yellow-400/20 rounded-md transition-colors cursor-pointer focus:bg-yellow-400/20 focus:outline-none">
+                  <Link href="/documentation" className="w-full px-3 py-2 text-sm text-foreground hover:text-yellow-300 flex items-center">
                     <BarChart3 className="w-4 h-4 mr-2" />
                     Documentation
                   </Link>

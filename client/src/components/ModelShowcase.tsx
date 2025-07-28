@@ -86,18 +86,27 @@ const ModelShowcase = () => {
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {models.map((model) => {
+          {models.map((model, index) => {
             const Icon = model.icon;
             return (
-              <Card 
+              <motion.div
                 key={model.id}
-                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group card-hover card-${
-                  model.id === 'prediction' ? 'red' :
-                  model.id === 'volatility' ? 'blue' :
-                  model.id === 'portfolio' ? 'green' :
-                  'yellow'
-                }`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                transition={{ 
+                  duration: 0.6, 
+                  ease: "easeOut",
+                  delay: index * 0.15
+                }}
               >
+                <Card 
+                  className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group card-hover card-${
+                    model.id === 'prediction' ? 'red' :
+                    model.id === 'volatility' ? 'blue' :
+                    model.id === 'portfolio' ? 'green' :
+                    'yellow'
+                  }`}
+                >
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 rounded-lg bg-gradient-dark ${model.color}`}>
@@ -140,7 +149,8 @@ const ModelShowcase = () => {
                     <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
-              </Card>
+                </Card>
+              </motion.div>
             );
           })}
         </div>

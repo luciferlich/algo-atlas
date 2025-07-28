@@ -118,10 +118,20 @@ const MetricsShowcase = () => {
         <div className="mb-16">
           <h3 className="text-2xl font-semibold mb-8 text-center">Model Accuracy Rates</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {modelMetrics.map((model) => {
+            {modelMetrics.map((model, index) => {
               const Icon = model.icon;
               return (
-                <Card key={model.id} className={`${model.borderColor} border-opacity-50`}>
+                <motion.div
+                  key={model.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    ease: "easeOut",
+                    delay: index * 0.1
+                  }}
+                >
+                  <Card className={`${model.borderColor} border-opacity-50`}>
                   <CardHeader>
                     <div className="flex items-center space-x-3">
                       <div className={`p-2 rounded-lg bg-gradient-dark ${model.color}`}>
@@ -151,7 +161,8 @@ const MetricsShowcase = () => {
                       </div>
                     ))}
                   </CardContent>
-                </Card>
+                  </Card>
+                </motion.div>
               );
             })}
           </div>
@@ -164,7 +175,17 @@ const MetricsShowcase = () => {
             {technologyMetrics.map((tech, index) => {
               const Icon = tech.icon;
               return (
-                <Card key={index} className="text-center">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    ease: "easeOut",
+                    delay: index * 0.1 + 0.4
+                  }}
+                >
+                  <Card className="text-center">
                   <CardHeader className="pb-4">
                     <div className="flex justify-center mb-3">
                       <div className="p-3 rounded-full bg-gradient-dark">
@@ -193,7 +214,8 @@ const MetricsShowcase = () => {
                       </div>
                     </div>
                   </CardContent>
-                </Card>
+                  </Card>
+                </motion.div>
               );
             })}
           </div>
