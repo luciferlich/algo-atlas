@@ -190,4 +190,27 @@ All colors MUST be HSL.
   .button-demo:hover {
     box-shadow: 0 0 20px hsl(220 85% 55% / 0.5), 0 5px 15px -5px hsl(0 0% 0% / 0.3);
   }
+
+  /* Disable text selection and cursor across entire application */
+  *, *::before, *::after {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default !important;
+  }
+
+  /* Re-enable selection for input fields and textareas */
+  input, textarea, [contenteditable="true"] {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    cursor: text !important;
+  }
+
+  /* Keep pointer cursor for interactive elements */
+  button, a, [role="button"], .cursor-pointer {
+    cursor: pointer !important;
+  }
 }
