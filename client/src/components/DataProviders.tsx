@@ -45,9 +45,8 @@ const DataProviders = () => {
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
               <div 
-                className="h-8"
+                className="h-8 w-auto bg-primary mask-image"
                 style={{
-                  backgroundColor: 'hsl(45 100% 85%)',
                   maskImage: `url(${provider.logo})`,
                   maskRepeat: 'no-repeat',
                   maskSize: 'contain',
@@ -56,7 +55,9 @@ const DataProviders = () => {
                   WebkitMaskRepeat: 'no-repeat',
                   WebkitMaskSize: 'contain',
                   WebkitMaskPosition: 'center',
-                  width: '120px'
+                  width: 'auto',
+                  minWidth: '100px',
+                  aspectRatio: 'auto'
                 }}
               />
             </div>
@@ -68,9 +69,8 @@ const DataProviders = () => {
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
               <div 
-                className="h-8"
+                className="h-8 w-auto bg-primary mask-image"
                 style={{
-                  backgroundColor: 'hsl(45 100% 85%)',
                   maskImage: `url(${provider.logo})`,
                   maskRepeat: 'no-repeat',
                   maskSize: 'contain',
@@ -79,7 +79,9 @@ const DataProviders = () => {
                   WebkitMaskRepeat: 'no-repeat',
                   WebkitMaskSize: 'contain',
                   WebkitMaskPosition: 'center',
-                  width: '120px'
+                  width: 'auto',
+                  minWidth: '100px',
+                  aspectRatio: 'auto'
                 }}
               />
             </div>
