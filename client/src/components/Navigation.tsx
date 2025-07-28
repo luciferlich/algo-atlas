@@ -28,53 +28,89 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors focus:outline-none focus:ring-0 focus:border-none">
                 Models <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <Link href="/price-prediction" className="w-full">Price Prediction</Link>
+              <DropdownMenuContent className="bg-black/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-lg p-1 min-w-[200px]">
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/price-prediction" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                    <TrendingUp className="w-4 h-4 mr-2 inline-block" />
+                    Price Prediction
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/volatility-modeling" className="w-full">Volatility Modeling</Link>
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/volatility-modeling" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                    <BarChart3 className="w-4 h-4 mr-2 inline-block" />
+                    Volatility Modeling
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/portfolio-forecasting" className="w-full">Portfolio Forecasting</Link>
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/portfolio-forecasting" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                    <Brain className="w-4 h-4 mr-2 inline-block" />
+                    Portfolio Forecasting
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/anomaly-detection" className="w-full">Anomaly Detection</Link>
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/anomaly-detection" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary">
+                    <AlertTriangle className="w-4 h-4 mr-2 inline-block" />
+                    Anomaly Detection
+                  </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors focus:outline-none focus:ring-0 focus:border-none">
                 Technology <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>Machine Learning</DropdownMenuItem>
-                <DropdownMenuItem>Deep Learning</DropdownMenuItem>
-                <DropdownMenuItem>Statistical Models</DropdownMenuItem>
-                <DropdownMenuItem>Real-time Analytics</DropdownMenuItem>
+              <DropdownMenuContent className="bg-black/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-lg p-1 min-w-[200px]">
+                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                  <Brain className="w-4 h-4 mr-2" />
+                  Machine Learning
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                  <Brain className="w-4 h-4 mr-2" />
+                  Deep Learning
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                  <BarChart3 className="w-4 h-4 mr-2" />
+                  Statistical Models
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none px-3 py-2 text-sm text-foreground hover:text-primary">
+                  <BarChart3 className="w-4 h-4 mr-2" />
+                  Real-time Analytics
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors focus:outline-none focus:ring-0 focus:border-none">
                 Company <ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <Link href="/about" className="w-full">About</Link>
+              <DropdownMenuContent className="bg-black/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-lg p-1 min-w-[200px]">
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/about" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                    <BarChart3 className="w-4 h-4 mr-2" />
+                    About
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/research" className="w-full">Research</Link>
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/research" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                    <Brain className="w-4 h-4 mr-2" />
+                    Research
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/contact" className="w-full">Contact</Link>
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/contact" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                    <BarChart3 className="w-4 h-4 mr-2" />
+                    Contact
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/documentation" className="w-full">Documentation</Link>
+                <DropdownMenuItem asChild className="hover:bg-primary/10 rounded-md transition-colors cursor-pointer focus:bg-primary/10 focus:outline-none">
+                  <Link href="/documentation" className="w-full px-3 py-2 text-sm text-foreground hover:text-primary flex items-center">
+                    <BarChart3 className="w-4 h-4 mr-2" />
+                    Documentation
+                  </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
