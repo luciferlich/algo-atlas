@@ -1,88 +1,91 @@
-import { Link } from "wouter";
-import { BarChart3 } from "lucide-react";
+import { Instagram, MessageCircle, Linkedin, Youtube, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black/50 border-t border-border/50 py-16">
-      <div className="container mx-auto px-6">
-        {/* Logo Section - Centered */}
-        <div className="text-center mb-12">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-4">
-            <BarChart3 className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">AlgoAtlas</span>
-          </Link>
-          <p className="text-muted-foreground text-sm max-w-md mx-auto">
-            Advanced financial analytics powered by machine learning and artificial intelligence.
+    <footer className="bg-black/90 border-t border-primary/10 mt-20">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* AlgoAtlas Section */}
+          <div className="space-y-4">
+            <h3 className="text-primary font-bold text-xl">AlgoAtlas</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Unlock Smarter, Faster Trading with AI-Powered Financial Analytics Platform
+            </p>
+          </div>
+
+          {/* Connect Section */}
+          <div className="space-y-4">
+            <h4 className="text-foreground font-semibold">Connect</h4>
+            <div className="flex flex-col space-y-3">
+              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
+                <Instagram className="h-4 w-4" />
+                <span className="text-sm">algoatlas_ai</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
+                <MessageCircle className="h-4 w-4" />
+                <span className="text-sm">Discord Server</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
+                <Twitter className="h-4 w-4" />
+                <span className="text-sm">X/Twitter</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
+                <Linkedin className="h-4 w-4" />
+                <span className="text-sm">LinkedIn</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
+                <Youtube className="h-4 w-4" />
+                <span className="text-sm">YouTube</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links Section */}
+          <div className="space-y-4">
+            <h4 className="text-foreground font-semibold">Quick Links</h4>
+            <div className="flex flex-col space-y-2">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Features
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Models
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Pricing
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Documentation
+              </a>
+            </div>
+          </div>
+
+          {/* Legal Section */}
+          <div className="space-y-4">
+            <h4 className="text-foreground font-semibold">Legal</h4>
+            <div className="flex flex-col space-y-2">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Disclaimer
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Privacy
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Terms of Service
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Disclaimer Section */}
+        <div className="mt-12 pt-8 border-t border-primary/10">
+          <p className="text-muted-foreground text-xs leading-relaxed">
+            Disclaimer: AlgoAtlas is a financial analytics and AI-powered platform. We are not a brokerage, investment advisor, or financial institution. The platform provides AI-powered analysis of market events and economic data for informational purposes only. We do not provide financial advice, investment recommendations, or trading signals. The insights and analysis provided through our platform should not be considered as certified financial guidance or professional advice without advice. Users should conduct their own research and consult with qualified financial professionals before making any investment decisions. All platform features and analysis are provided "as is" without any guarantees of accuracy or specific trading outcomes. All sales are final, and we do not offer refunds.
           </p>
         </div>
 
-        {/* Links Section - Centered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <h3 className="font-semibold mb-4">Models</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <Link href="/price-prediction" className="hover:text-primary transition-colors">
-                  Price Prediction
-                </Link>
-              </li>
-              <li>
-                <Link href="/volatility-modeling" className="hover:text-primary transition-colors">
-                  Volatility Modeling
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio-forecasting" className="hover:text-primary transition-colors">
-                  Portfolio Forecasting
-                </Link>
-              </li>
-              <li>
-                <Link href="/anomaly-detection" className="hover:text-primary transition-colors">
-                  Anomaly Detection
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="text-center">
-            <h3 className="font-semibold mb-4">Technology</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Machine Learning</li>
-              <li>Deep Learning</li>
-              <li>Statistical Models</li>
-              <li>Real-time Analytics</li>
-            </ul>
-          </div>
-
-          <div className="text-center">
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <Link href="/about" className="hover:text-primary transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/research" className="hover:text-primary transition-colors">
-                  Research
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/documentation" className="hover:text-primary transition-colors">
-                  Documentation
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-border/50 mt-12 pt-8 text-center">
-          <p className="text-muted-foreground text-sm">
+        {/* Copyright */}
+        <div className="mt-8 pt-4 border-t border-primary/10">
+          <p className="text-center text-muted-foreground text-sm">
             © 2025 AlgoAtlas. All rights reserved.
           </p>
         </div>
