@@ -245,4 +245,22 @@ All colors MUST be HSL.
     scrollbar-width: thin;
     scrollbar-color: #D4AF37 #000000;
   }
+
+  /* Data providers marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
