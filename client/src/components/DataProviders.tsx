@@ -44,12 +44,20 @@ const DataProviders = () => {
               key={`set1-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <img 
-                src={provider.logo} 
-                alt={provider.name}
-                className="h-8 w-auto"
+              <div 
+                className="h-8 w-auto bg-primary mask-image"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(85%) sepia(58%) saturate(2776%) hue-rotate(3deg) brightness(102%) contrast(104%)'
+                  maskImage: `url(${provider.logo})`,
+                  maskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  WebkitMaskImage: `url(${provider.logo})`,
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  width: 'auto',
+                  minWidth: '100px',
+                  aspectRatio: 'auto'
                 }}
               />
             </div>
@@ -60,12 +68,20 @@ const DataProviders = () => {
               key={`set2-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <img 
-                src={provider.logo} 
-                alt={provider.name}
-                className="h-8 w-auto"
+              <div 
+                className="h-8 w-auto bg-primary mask-image"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(85%) sepia(58%) saturate(2776%) hue-rotate(3deg) brightness(102%) contrast(104%)'
+                  maskImage: `url(${provider.logo})`,
+                  maskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  WebkitMaskImage: `url(${provider.logo})`,
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  width: 'auto',
+                  minWidth: '100px',
+                  aspectRatio: 'auto'
                 }}
               />
             </div>
