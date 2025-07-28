@@ -2,12 +2,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-20">
+      <Navigation />
+      <div className="container mx-auto px-6 py-20 pt-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
@@ -91,6 +94,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

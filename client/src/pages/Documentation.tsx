@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { FileText, Code, Database, Settings } from "lucide-react";
 
 const Documentation = () => {
@@ -35,7 +37,8 @@ const Documentation = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-20">
+      <Navigation />
+      <div className="container mx-auto px-6 py-20 pt-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
@@ -122,6 +125,7 @@ const Documentation = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

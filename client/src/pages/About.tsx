@@ -1,10 +1,13 @@
 import { Card } from "@/components/ui/card";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Brain } from "lucide-react";
 
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-20">
+      <Navigation />
+      <div className="container mx-auto px-6 py-20 pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
@@ -50,6 +53,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
