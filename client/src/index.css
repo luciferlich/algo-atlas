@@ -186,7 +186,7 @@ All colors MUST be HSL.
     box-shadow: 0 0 25px hsl(45 100% 60% / 0.5), 0 5px 15px -5px hsl(0 0% 0% / 0.4);
   }
 
-  /* Green gradient background popup effect for demo button */
+  /* Light green gradient background popup effect for demo button */
   .button-demo::before {
     content: '';
     position: absolute;
@@ -194,7 +194,7 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.2));
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(34, 197, 94, 0.12));
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: -1;
