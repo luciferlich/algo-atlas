@@ -52,7 +52,7 @@ const PricePrediction = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {models.map((model, index) => (
-              <Card key={index} className="card-premium">
+              <Card key={index} className="card-hover">
                 <CardHeader>
                   <div className="flex items-center space-x-4">
                     <div className="text-primary">
