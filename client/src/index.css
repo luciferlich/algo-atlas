@@ -246,17 +246,19 @@ All colors MUST be HSL.
     scrollbar-color: #D4AF37 #000000;
   }
 
-  /* Data providers marquee animation - endless scrolling */
-  @keyframes marquee-endless {
+  /* Crypto data providers infinite scroll */
+  @keyframes scroll-infinite {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
     }
   }
 
-  .animate-marquee-endless {
-    animation: marquee-endless 25s linear infinite;
+  .animate-scroll-infinite {
+    animation: scroll-infinite 30s linear infinite;
+    display: flex;
+    width: max-content;
   }
 }

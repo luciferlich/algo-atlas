@@ -26,10 +26,10 @@ AlgoAtlas is an advanced financial analytics platform that provides machine lear
     - Comprehensive risk disclaimer addressing black swan events and model limitations
 23. **Navigation Verification**: Confirmed AlgoAtlas logo navigation returns users to homepage
 24. **Data Providers Section**: Added dynamic "DATA POWERED BY" marquee with:
-    - Smooth right-to-left scrolling animation
-    - Professional financial data providers (Reuters, Nasdaq, CME Group, Bloomberg, S&P Global, Refinitiv)
-    - Color-coded icons and hover pause functionality
-    - Positioned above ML models section
+    - True infinite scroll animation (no pauses or restarts)
+    - Crypto-focused data providers (KuCoin, Binance, CoinGecko, CoinMarketCap, Crypto.com, Coinbase)
+    - Professional gold-styled logos with gradient fade edges
+    - Positioned above ML models section for crypto trading focus
 
 ### Migration from Lovable to Replit
 1. **Routing Migration**: Converted from React Router DOM to Wouter for Replit compatibility
