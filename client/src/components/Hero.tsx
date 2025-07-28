@@ -21,7 +21,7 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 pt-32">
         <div className="text-center space-y-8">
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
