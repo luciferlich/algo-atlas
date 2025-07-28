@@ -1,8 +1,8 @@
-import coinGeckoLogo from "@assets/image_1753718286954.png";
-import coinMarketCapLogo from "@assets/image_1753718339755.png";
-import kucoinLogo from "@assets/image_1753718391863.png";
-import coinbaseLogo from "@assets/image_1753718418904.png";
-import binanceLogo from "@assets/image_1753718449889.png";
+import coinGeckoLogo from "@/assets/coingecko-logo.png";
+import coinMarketCapLogo from "@/assets/coinmarketcap-logo.png";
+import kucoinLogo from "@/assets/kucoin-logo.png";
+import coinbaseLogo from "@/assets/coinbase-logo.png";
+import binanceLogo from "@/assets/binance-logo.png";
 
 const DataProviders = () => {
   const cryptoProviders = [
@@ -49,7 +49,7 @@ const DataProviders = () => {
                 alt={provider.name}
                 className="h-8 w-auto"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(84%) sepia(48%) saturate(2020%) hue-rotate(15deg) brightness(106%) contrast(106%)'
+                  filter: 'brightness(0) saturate(100%) invert(79%) sepia(97%) saturate(1134%) hue-rotate(3deg) brightness(107%) contrast(101%)'
                 }}
               />
             </div>
@@ -65,7 +65,7 @@ const DataProviders = () => {
                 alt={provider.name}
                 className="h-8 w-auto"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(84%) sepia(48%) saturate(2020%) hue-rotate(15deg) brightness(106%) contrast(106%)'
+                  filter: 'brightness(0) saturate(100%) invert(79%) sepia(97%) saturate(1134%) hue-rotate(3deg) brightness(107%) contrast(101%)'
                 }}
               />
             </div>
