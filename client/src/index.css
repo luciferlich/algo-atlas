@@ -127,7 +127,7 @@ All colors MUST be HSL.
   }
   
   .card-hover:hover {
-    @apply border-primary shadow-glow;
+    @apply border-primary shadow-xl;
     background: linear-gradient(135deg, hsl(45 100% 60% / 0.1), hsl(45 100% 75% / 0.05));
   }
 }

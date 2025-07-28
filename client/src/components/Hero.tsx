@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Brain, TrendingUp, BarChart3, Shield } from "lucide-react";
-import heroImage from "@/assets/hero-bg.jpg";
+// import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 opacity-50"
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background" />
       

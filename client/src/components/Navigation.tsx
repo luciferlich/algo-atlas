@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { BarChart3, Brain, TrendingUp, AlertTriangle, Menu } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 
 const Navigation = () => {
   return (
@@ -15,16 +15,16 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/price-prediction" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/price-prediction" className="text-foreground hover:text-primary transition-colors">
               Price Prediction
             </Link>
-            <Link to="/volatility-modeling" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/volatility-modeling" className="text-foreground hover:text-primary transition-colors">
               Volatility Modeling
             </Link>
-            <Link to="/portfolio-forecasting" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/portfolio-forecasting" className="text-foreground hover:text-primary transition-colors">
               Portfolio Forecasting
             </Link>
-            <Link to="/anomaly-detection" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/anomaly-detection" className="text-foreground hover:text-primary transition-colors">
               Anomaly Detection
             </Link>
           </div>
