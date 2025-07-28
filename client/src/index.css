@@ -132,23 +132,23 @@ All colors MUST be HSL.
 
   /* Individual card hover effects with colored glows */
   .card-red:hover {
-    @apply border-red-400;
-    box-shadow: 0 0 30px hsl(0 75% 55% / 0.4), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
+    @apply border-red-600;
+    box-shadow: 0 0 25px hsl(0 60% 40% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
   }
 
   .card-blue:hover {
-    @apply border-blue-400;
-    box-shadow: 0 0 30px hsl(220 85% 55% / 0.4), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
+    @apply border-blue-600;
+    box-shadow: 0 0 25px hsl(220 70% 40% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
   }
 
   .card-green:hover {
-    @apply border-green-400;
-    box-shadow: 0 0 30px hsl(142 70% 45% / 0.4), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
+    @apply border-green-600;
+    box-shadow: 0 0 25px hsl(142 60% 35% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
   }
 
   .card-yellow:hover {
-    @apply border-yellow-400;
-    box-shadow: 0 0 30px hsl(48 95% 55% / 0.4), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
+    @apply border-yellow-600;
+    box-shadow: 0 0 25px hsl(48 80% 45% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.8);
   }
 
   .card-premium {

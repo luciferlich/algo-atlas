@@ -11,9 +11,9 @@ const models = [
     description: "Advanced neural networks and statistical models for accurate price forecasting",
     techniques: ["LSTM Networks", "ARIMA", "Linear Regression", "Random Forest"],
     color: "text-red-400",
-    gradient: "from-red-900/80 to-red-800/60",
-    borderColor: "border-red-600/50",
-    hoverBorder: "hover:border-red-400"
+    gradient: "from-red-950/40 to-red-900/20",
+    borderColor: "border-red-800/30",
+    hoverBorder: "hover:border-red-600"
   },
   {
     id: "volatility", 
@@ -22,9 +22,9 @@ const models = [
     description: "Sophisticated models to capture and predict market volatility patterns",
     techniques: ["LSTM Networks", "GARCH Models", "Attention-Based Models", "Stochastic Volatility"],
     color: "text-blue-400",
-    gradient: "from-blue-900/80 to-blue-800/60",
-    borderColor: "border-blue-600/50",
-    hoverBorder: "hover:border-blue-400"
+    gradient: "from-blue-950/40 to-blue-900/20",
+    borderColor: "border-blue-800/30",
+    hoverBorder: "hover:border-blue-600"
   },
   {
     id: "portfolio",
@@ -33,9 +33,9 @@ const models = [
     description: "Risk assessment and portfolio optimization using cutting-edge ML techniques",
     techniques: ["Value at Risk (VaR)", "DeepAR", "Transformer Models", "Monte Carlo"],
     color: "text-green-400",
-    gradient: "from-green-900/80 to-green-800/60",
-    borderColor: "border-green-600/50",
-    hoverBorder: "hover:border-green-400"
+    gradient: "from-green-950/40 to-green-900/20",
+    borderColor: "border-green-800/30",
+    hoverBorder: "hover:border-green-600"
   },
   {
     id: "anomaly",
@@ -44,9 +44,9 @@ const models = [
     description: "Identify market irregularities and unusual patterns in real-time",
     techniques: ["Autoencoders", "Isolation Forest", "HDBSCAN", "One-Class SVM"],
     color: "text-yellow-400",
-    gradient: "from-yellow-900/80 to-yellow-700/60",
-    borderColor: "border-yellow-600/50",
-    hoverBorder: "hover:border-yellow-400"
+    gradient: "from-yellow-950/40 to-amber-900/20",
+    borderColor: "border-yellow-800/30",
+    hoverBorder: "hover:border-yellow-600"
   }
 ];
 
