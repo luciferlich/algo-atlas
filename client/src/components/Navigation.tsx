@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { BarChart3, Brain, TrendingUp, AlertTriangle, Menu, ChevronDown } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +9,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
+  const [, setLocation] = useLocation();
+
+  const handleGetStarted = () => {
+    setLocation('/contact');
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -75,7 +81,7 @@ const Navigation = () => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button variant="analytics">
+            <Button variant="analytics" onClick={handleGetStarted}>
               Get Started
             </Button>
             <Button variant="ghost" size="icon" className="md:hidden">
