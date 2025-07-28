@@ -213,42 +213,17 @@ const MetricsShowcase = () => {
 
         {/* Risk Disclaimer */}
         <div className="mt-16">
-          <Card className="max-w-5xl mx-auto border-destructive/20 bg-gradient-to-br from-destructive/5 to-destructive/10">
-            <CardContent className="py-8">
-              <div className="text-center mb-6">
-                <h4 className="text-xl font-semibold text-destructive mb-2">⚠️ Important Risk Disclosure</h4>
-                <p className="text-sm text-muted-foreground">
-                  Financial modeling limitations and market unpredictability
+          <Card className="max-w-4xl mx-auto border-destructive/20 bg-gradient-to-br from-destructive/5 to-destructive/10">
+            <CardContent className="py-6">
+              <div className="text-center">
+                <h4 className="text-lg font-semibold text-destructive mb-3">⚠️ Risk Disclosure</h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Models cannot predict black swan events, market crashes, or unprecedented conditions. 
+                  Accuracy is based on historical data under normal market conditions only.
                 </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                <div className="space-y-3">
-                  <h5 className="font-semibold text-destructive">Model Limitations</h5>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>• Accuracy percentages are based on historical backtesting under normal market conditions</li>
-                    <li>• Models cannot predict black swan events, market crashes, or extreme volatility</li>
-                    <li>• Performance may significantly degrade during unprecedented market conditions</li>
-                    <li>• Past performance does not guarantee future results</li>
-                  </ul>
-                </div>
-                
-                <div className="space-y-3">
-                  <h5 className="font-semibold text-destructive">Unpredictable Events</h5>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li>• Geopolitical crises and natural disasters</li>
-                    <li>• Central bank policy surprises and regulatory changes</li>
-                    <li>• Technological disruptions and market manipulation</li>
-                    <li>• Pandemic outbreaks and economic recessions</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="mt-6 p-4 bg-destructive/10 rounded-lg border border-destructive/20">
-                <p className="text-xs text-center text-muted-foreground">
-                  <strong>Disclaimer:</strong> AlgoAtlas models are tools for analysis and should not be the sole basis for investment decisions. 
-                  Always consult with qualified financial advisors and conduct your own research. 
-                  Markets are inherently unpredictable, and no model can account for all variables affecting financial instruments.
+                <p className="text-xs text-muted-foreground">
+                  <strong>Disclaimer:</strong> These are analytical tools, not investment advice. 
+                  Always consult financial advisors and conduct independent research.
                 </p>
               </div>
             </CardContent>
