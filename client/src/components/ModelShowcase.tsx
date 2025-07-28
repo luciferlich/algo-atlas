@@ -11,9 +11,9 @@ const models = [
     description: "Advanced neural networks and statistical models for accurate price forecasting",
     techniques: ["LSTM Networks", "ARIMA", "Linear Regression", "Random Forest"],
     color: "text-red-400",
-    gradient: "from-red/20 to-red/5",
-    borderColor: "border-red/20",
-    hoverBorder: "hover:border-red/40"
+    gradient: "from-red-900/80 to-red-800/60",
+    borderColor: "border-red-600/50",
+    hoverBorder: "hover:border-red-400"
   },
   {
     id: "volatility", 
@@ -22,9 +22,9 @@ const models = [
     description: "Sophisticated models to capture and predict market volatility patterns",
     techniques: ["LSTM Networks", "GARCH Models", "Attention-Based Models", "Stochastic Volatility"],
     color: "text-blue-400",
-    gradient: "from-blue/20 to-blue/5",
-    borderColor: "border-blue/20",
-    hoverBorder: "hover:border-blue/40"
+    gradient: "from-blue-900/80 to-blue-800/60",
+    borderColor: "border-blue-600/50",
+    hoverBorder: "hover:border-blue-400"
   },
   {
     id: "portfolio",
@@ -33,9 +33,9 @@ const models = [
     description: "Risk assessment and portfolio optimization using cutting-edge ML techniques",
     techniques: ["Value at Risk (VaR)", "DeepAR", "Transformer Models", "Monte Carlo"],
     color: "text-green-400",
-    gradient: "from-green/20 to-green/5",
-    borderColor: "border-green/20",
-    hoverBorder: "hover:border-green/40"
+    gradient: "from-green-900/80 to-green-800/60",
+    borderColor: "border-green-600/50",
+    hoverBorder: "hover:border-green-400"
   },
   {
     id: "anomaly",
@@ -44,9 +44,9 @@ const models = [
     description: "Identify market irregularities and unusual patterns in real-time",
     techniques: ["Autoencoders", "Isolation Forest", "HDBSCAN", "One-Class SVM"],
     color: "text-yellow-400",
-    gradient: "from-yellow/20 to-yellow/5",
-    borderColor: "border-yellow/20",
-    hoverBorder: "hover:border-yellow/40"
+    gradient: "from-yellow-900/80 to-yellow-700/60",
+    borderColor: "border-yellow-600/50",
+    hoverBorder: "hover:border-yellow-400"
   }
 ];
 
@@ -70,7 +70,12 @@ const ModelShowcase = () => {
             return (
               <Card 
                 key={model.id}
-                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group card-hover`}
+                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group card-hover card-${
+                  model.id === 'prediction' ? 'red' :
+                  model.id === 'volatility' ? 'blue' :
+                  model.id === 'portfolio' ? 'green' :
+                  'yellow'
+                }`}
               >
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
