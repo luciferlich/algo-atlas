@@ -4,6 +4,16 @@ import { Brain, TrendingUp, BarChart3, Shield } from "lucide-react";
 // import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
+  const scrollToModels = () => {
+    const modelsSection = document.getElementById('models-section');
+    if (modelsSection) {
+      modelsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div 
@@ -27,7 +37,7 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg">
+            <Button variant="hero" size="lg" onClick={scrollToModels}>
               Start Analysis
             </Button>
             <Button variant="outline" size="lg" className="border-blue-400 text-blue-400 hover:bg-blue-400/10 hover:text-white button-demo">
