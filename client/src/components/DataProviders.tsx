@@ -47,7 +47,7 @@ const DataProviders = () => {
               <div 
                 className="h-8"
                 style={{
-                  backgroundColor: 'hsl(45 100% 75%)',
+                  backgroundColor: 'hsl(45 100% 85%)',
                   maskImage: `url(${provider.logo})`,
                   maskRepeat: 'no-repeat',
                   maskSize: 'contain',
@@ -70,7 +70,7 @@ const DataProviders = () => {
               <div 
                 className="h-8"
                 style={{
-                  backgroundColor: 'hsl(45 100% 75%)',
+                  backgroundColor: 'hsl(45 100% 85%)',
                   maskImage: `url(${provider.logo})`,
                   maskRepeat: 'no-repeat',
                   maskSize: 'contain',
