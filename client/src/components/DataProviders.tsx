@@ -45,8 +45,9 @@ const DataProviders = () => {
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
               <div 
-                className="h-8 bg-primary"
+                className="h-8"
                 style={{
+                  backgroundColor: 'hsl(45 100% 75%)',
                   maskImage: `url(${provider.logo})`,
                   maskRepeat: 'no-repeat',
                   maskSize: 'contain',
@@ -67,8 +68,9 @@ const DataProviders = () => {
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
               <div 
-                className="h-8 bg-primary"
+                className="h-8"
                 style={{
+                  backgroundColor: 'hsl(45 100% 75%)',
                   maskImage: `url(${provider.logo})`,
                   maskRepeat: 'no-repeat',
                   maskSize: 'contain',
