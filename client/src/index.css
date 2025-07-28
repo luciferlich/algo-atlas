@@ -272,12 +272,12 @@ All colors MUST be HSL.
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-33.333%);
     }
   }
 
   .animate-scroll-infinite {
-    animation: scroll-infinite 30s linear infinite;
+    animation: scroll-infinite 45s linear infinite;
     display: flex;
     width: max-content;
   }

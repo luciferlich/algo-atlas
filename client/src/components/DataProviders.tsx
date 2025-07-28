@@ -56,7 +56,7 @@ const DataProviders = () => {
                   WebkitMaskSize: 'contain',
                   WebkitMaskPosition: 'center',
                   width: 'auto',
-                  minWidth: '100px',
+                  minWidth: '120px',
                   aspectRatio: 'auto'
                 }}
               />
@@ -80,7 +80,31 @@ const DataProviders = () => {
                   WebkitMaskSize: 'contain',
                   WebkitMaskPosition: 'center',
                   width: 'auto',
-                  minWidth: '100px',
+                  minWidth: '120px',
+                  aspectRatio: 'auto'
+                }}
+              />
+            </div>
+          ))}
+          {/* Third set for wider screens */}
+          {cryptoProviders.map((provider, index) => (
+            <div 
+              key={`set3-${index}`}
+              className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
+            >
+              <div 
+                className="h-8 w-auto bg-primary mask-image"
+                style={{
+                  maskImage: `url(${provider.logo})`,
+                  maskRepeat: 'no-repeat',
+                  maskSize: 'contain',
+                  maskPosition: 'center',
+                  WebkitMaskImage: `url(${provider.logo})`,
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskPosition: 'center',
+                  width: 'auto',
+                  minWidth: '120px',
                   aspectRatio: 'auto'
                 }}
               />
