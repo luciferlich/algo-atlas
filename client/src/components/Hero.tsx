@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Brain, TrendingUp, BarChart3, Shield } from "lucide-react";
+import { motion } from "framer-motion";
 // import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -21,9 +22,14 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 pt-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 pt-32">
         <div className="text-center space-y-8">
-          <div className="space-y-4">
+          <motion.div 
+            className="space-y-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               Advanced Financial
               <span className="bg-gradient-primary bg-clip-text text-transparent block">
@@ -34,7 +40,7 @@ const Hero = () => {
               Harness the power of machine learning for price prediction, volatility modeling, 
               portfolio forecasting, and anomaly detection in financial markets.
             </p>
-          </div>
+          </motion.div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button variant="hero" size="lg" onClick={scrollToModels}>

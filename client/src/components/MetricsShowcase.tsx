@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, BarChart3, Brain, Shield, Cpu, Database, Zap, Target } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const modelMetrics = [
   {
@@ -90,10 +92,19 @@ const technologyMetrics = [
 ];
 
 const MetricsShowcase = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-background to-secondary/20">
+    <section className="py-12 px-6 bg-gradient-to-b from-background to-secondary/20">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-4 mb-16">
+        <motion.div 
+          ref={ref}
+          className="text-center space-y-4 mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold">
             Performance Metrics
           </h2>
@@ -101,7 +112,7 @@ const MetricsShowcase = () => {
             Real-world accuracy rates and efficiency metrics from our production models, 
             validated across thousands of financial instruments and market conditions.
           </p>
-        </div>
+        </motion.div>
 
         {/* Model Accuracy Metrics */}
         <div className="mb-16">

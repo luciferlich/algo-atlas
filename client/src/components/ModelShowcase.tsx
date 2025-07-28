@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, BarChart3, Brain, Shield, ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const models = [
   {
@@ -57,15 +59,23 @@ const models = [
 
 const ModelShowcase = () => {
   const [, setLocation] = useLocation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const handleExploreModel = (route: string) => {
     setLocation(route);
   };
 
   return (
-    <section id="models-section" className="py-20 px-6">
+    <section id="models-section" className="py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-4 mb-16">
+        <motion.div 
+          ref={ref}
+          className="text-center space-y-4 mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold">
             Advanced ML Models
           </h2>
@@ -73,7 +83,7 @@ const ModelShowcase = () => {
             Explore our comprehensive suite of machine learning models designed 
             for sophisticated financial analysis and risk management.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {models.map((model) => {
