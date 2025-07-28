@@ -44,20 +44,12 @@ const DataProviders = () => {
               key={`set1-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <div 
-                className="h-8 w-auto bg-primary mask-image"
+              <img 
+                src={provider.logo} 
+                alt={provider.name}
+                className="h-8 w-auto brightness-0 invert"
                 style={{
-                  maskImage: `url(${provider.logo})`,
-                  maskRepeat: 'no-repeat',
-                  maskSize: 'contain',
-                  maskPosition: 'center',
-                  WebkitMaskImage: `url(${provider.logo})`,
-                  WebkitMaskRepeat: 'no-repeat',
-                  WebkitMaskSize: 'contain',
-                  WebkitMaskPosition: 'center',
-                  width: 'auto',
-                  minWidth: '100px',
-                  aspectRatio: 'auto'
+                  filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg) brightness(1.2)'
                 }}
               />
             </div>
@@ -68,20 +60,12 @@ const DataProviders = () => {
               key={`set2-${index}`}
               className="flex items-center whitespace-nowrap flex-shrink-0 mx-12"
             >
-              <div 
-                className="h-8 w-auto bg-primary mask-image"
+              <img 
+                src={provider.logo} 
+                alt={provider.name}
+                className="h-8 w-auto brightness-0 invert"
                 style={{
-                  maskImage: `url(${provider.logo})`,
-                  maskRepeat: 'no-repeat',
-                  maskSize: 'contain',
-                  maskPosition: 'center',
-                  WebkitMaskImage: `url(${provider.logo})`,
-                  WebkitMaskRepeat: 'no-repeat',
-                  WebkitMaskSize: 'contain',
-                  WebkitMaskPosition: 'center',
-                  width: 'auto',
-                  minWidth: '100px',
-                  aspectRatio: 'auto'
+                  filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg) brightness(1.2)'
                 }}
               />
             </div>
