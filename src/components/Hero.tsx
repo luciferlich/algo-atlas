@@ -31,7 +31,7 @@ const Hero = () => {
             <Button variant="hero" size="lg">
               Start Analysis
             </Button>
-            <Button variant="premium" size="lg">
+            <Button variant="default" size="lg">
               View Demo
             </Button>
           </div>
