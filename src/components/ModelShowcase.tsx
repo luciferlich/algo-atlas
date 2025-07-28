@@ -10,8 +10,10 @@ const models = [
     icon: TrendingUp,
     description: "Advanced neural networks and statistical models for accurate price forecasting",
     techniques: ["LSTM Networks", "ARIMA", "Linear Regression", "Random Forest"],
-    color: "text-primary",
-    gradient: "from-primary/20 to-primary/5"
+    color: "text-red-400",
+    gradient: "from-red/20 to-red/5",
+    borderColor: "border-red/20",
+    hoverBorder: "hover:border-red/40"
   },
   {
     id: "volatility", 
@@ -19,8 +21,10 @@ const models = [
     icon: BarChart3,
     description: "Sophisticated models to capture and predict market volatility patterns",
     techniques: ["LSTM Networks", "GARCH Models", "Attention-Based Models", "Stochastic Volatility"],
-    color: "text-accent",
-    gradient: "from-accent/20 to-accent/5"
+    color: "text-blue-400",
+    gradient: "from-blue/20 to-blue/5",
+    borderColor: "border-blue/20",
+    hoverBorder: "hover:border-blue/40"
   },
   {
     id: "portfolio",
@@ -28,8 +32,10 @@ const models = [
     icon: Brain,
     description: "Risk assessment and portfolio optimization using cutting-edge ML techniques",
     techniques: ["Value at Risk (VaR)", "DeepAR", "Transformer Models", "Monte Carlo"],
-    color: "text-success",
-    gradient: "from-success/20 to-success/5"
+    color: "text-green-400",
+    gradient: "from-green/20 to-green/5",
+    borderColor: "border-green/20",
+    hoverBorder: "hover:border-green/40"
   },
   {
     id: "anomaly",
@@ -37,8 +43,10 @@ const models = [
     icon: Shield,
     description: "Identify market irregularities and unusual patterns in real-time",
     techniques: ["Autoencoders", "Isolation Forest", "HDBSCAN", "One-Class SVM"],
-    color: "text-warning",
-    gradient: "from-warning/20 to-warning/5"
+    color: "text-yellow-400",
+    gradient: "from-yellow/20 to-yellow/5",
+    borderColor: "border-yellow/20",
+    hoverBorder: "hover:border-yellow/40"
   }
 ];
 
@@ -62,7 +70,7 @@ const ModelShowcase = () => {
             return (
               <Card 
                 key={model.id}
-                className={`p-8 bg-gradient-to-br ${model.gradient} border-primary/20 hover:border-primary/40 transition-all duration-300 group hover:shadow-card`}
+                className={`p-8 bg-gradient-to-br ${model.gradient} ${model.borderColor} ${model.hoverBorder} transition-all duration-300 group hover:shadow-card`}
               >
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">

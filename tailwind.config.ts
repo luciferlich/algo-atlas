@@ -56,6 +56,10 @@ export default {
 				success: 'hsl(var(--success))',
 				warning: 'hsl(var(--warning))',
 				error: 'hsl(var(--error))',
+				red: 'hsl(var(--red))',
+				green: 'hsl(var(--green))',
+				blue: 'hsl(var(--blue))',
+				yellow: 'hsl(var(--yellow))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

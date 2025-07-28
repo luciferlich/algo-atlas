@@ -41,6 +41,11 @@ All colors MUST be HSL.
     --warning: 38 92% 50%;
     --error: 0 84.2% 60.2%;
 
+    --red: 0 75% 55%;
+    --green: 142 70% 45%;
+    --blue: 220 85% 55%;
+    --yellow: 48 95% 55%;
+
     --gradient-primary: linear-gradient(135deg, hsl(45 100% 60%), hsl(45 100% 75%));
     --gradient-secondary: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 15%));
     --gradient-dark: linear-gradient(135deg, hsl(0 0% 5%), hsl(0 0% 12%));
