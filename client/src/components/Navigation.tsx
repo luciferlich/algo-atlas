@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { BarChart3, Brain, TrendingUp, AlertTriangle, Menu } from "lucide-react";
+import { BarChart3, Brain, TrendingUp, AlertTriangle, Menu, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   return (
@@ -15,18 +21,57 @@ const Navigation = () => {
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/price-prediction" className="text-foreground hover:text-primary transition-colors">
-              Price Prediction
-            </Link>
-            <Link href="/volatility-modeling" className="text-foreground hover:text-primary transition-colors">
-              Volatility Modeling
-            </Link>
-            <Link href="/portfolio-forecasting" className="text-foreground hover:text-primary transition-colors">
-              Portfolio Forecasting
-            </Link>
-            <Link href="/anomaly-detection" className="text-foreground hover:text-primary transition-colors">
-              Anomaly Detection
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+                Models <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <Link href="/price-prediction" className="w-full">Price Prediction</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/volatility-modeling" className="w-full">Volatility Modeling</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/portfolio-forecasting" className="w-full">Portfolio Forecasting</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/anomaly-detection" className="w-full">Anomaly Detection</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+                Technology <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>Machine Learning</DropdownMenuItem>
+                <DropdownMenuItem>Deep Learning</DropdownMenuItem>
+                <DropdownMenuItem>Statistical Models</DropdownMenuItem>
+                <DropdownMenuItem>Real-time Analytics</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+                Company <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <Link href="/about" className="w-full">About</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/research" className="w-full">Research</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/contact" className="w-full">Contact</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/documentation" className="w-full">Documentation</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
           
           <div className="flex items-center space-x-4">
