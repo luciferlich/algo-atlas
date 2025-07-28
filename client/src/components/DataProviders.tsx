@@ -47,9 +47,9 @@ const DataProviders = () => {
               <img 
                 src={provider.logo} 
                 alt={provider.name}
-                className="h-8 w-auto brightness-0 invert"
+                className="h-8 w-auto"
                 style={{
-                  filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg) brightness(1.2)'
+                  filter: 'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9) contrast(1.2)'
                 }}
               />
             </div>
@@ -63,9 +63,9 @@ const DataProviders = () => {
               <img 
                 src={provider.logo} 
                 alt={provider.name}
-                className="h-8 w-auto brightness-0 invert"
+                className="h-8 w-auto"
                 style={{
-                  filter: 'brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(25deg) brightness(1.2)'
+                  filter: 'brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.9) contrast(1.2)'
                 }}
               />
             </div>
