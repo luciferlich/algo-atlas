@@ -15,8 +15,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
           {/* Connect Section */}
-          <div className="space-y-4 text-center">
-            <h4 className="text-foreground font-semibold">Connect</h4>
+          <div className="space-y-4">
+            <h4 className="text-foreground font-semibold text-center">Connect</h4>
             <div className="flex flex-col space-y-3">
               <a href="#" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="h-4 w-4" />
@@ -35,8 +35,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-4 text-center">
-            <h4 className="text-foreground font-semibold">Quick Links</h4>
+          <div className="space-y-4">
+            <h4 className="text-foreground font-semibold text-center">Quick Links</h4>
             <div className="flex flex-col space-y-2">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Features
@@ -54,8 +54,8 @@ const Footer = () => {
           </div>
 
           {/* Legal Section */}
-          <div className="space-y-4 text-center">
-            <h4 className="text-foreground font-semibold">Legal</h4>
+          <div className="space-y-4">
+            <h4 className="text-foreground font-semibold text-center">Legal</h4>
             <div className="flex flex-col space-y-2">
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                 Disclaimer
