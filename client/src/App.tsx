@@ -13,6 +13,10 @@ import About from "./pages/About";
 import Research from "./pages/Research";
 import Contact from "./pages/Contact";
 import Documentation from "./pages/Documentation";
+import MachineLearning from "./pages/MachineLearning";
+import DeepLearning from "./pages/DeepLearning";
+import StatisticalModels from "./pages/StatisticalModels";
+import RealTimeAnalytics from "./pages/RealTimeAnalytics";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +35,10 @@ const App = () => (
         <Route path="/research" component={Research} />
         <Route path="/contact" component={Contact} />
         <Route path="/documentation" component={Documentation} />
+        <Route path="/machine-learning" component={MachineLearning} />
+        <Route path="/deep-learning" component={DeepLearning} />
+        <Route path="/statistical-models" component={StatisticalModels} />
+        <Route path="/real-time-analytics" component={RealTimeAnalytics} />
       </Router>
     </TooltipProvider>
   </QueryClientProvider>
