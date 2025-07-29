@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Bot, Send, TrendingUp, Newspaper, Loader2, Sparkles } from "lucide-react";
+import { Send, TrendingUp, Newspaper, Loader2, Sparkles, Bot } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -112,19 +112,19 @@ const AIChat = () => {
       <DialogTrigger asChild>
         <Button 
           variant="default" 
-          className="bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-500 hover:to-amber-500 text-black font-semibold px-6 py-2 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:via-yellow-400 hover:to-amber-500 text-black font-bold px-6 py-2 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] border border-amber-400/30 relative overflow-hidden group"
         >
-          <Bot className="h-4 w-4 mr-2" />
-          AI Assistant
+          <span className="relative z-10">Start Analysis</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-yellow-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl h-[80vh] bg-black border-yellow-600/30">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-yellow-400">
             <Sparkles className="h-5 w-5" />
-            Real-Time Crypto AI Assistant
+            AlgoAtlas AI Assistant
             <Badge variant="secondary" className="bg-yellow-600/20 text-yellow-300 border-yellow-600/30">
-              Live Data
+              Live Analysis
             </Badge>
           </DialogTitle>
         </DialogHeader>

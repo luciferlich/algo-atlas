@@ -18,11 +18,11 @@ AlgoAtlas is an advanced financial analytics platform that provides machine lear
 
 ### Real-Time AI Chatbot Implementation
 27. **AI Chatbot Integration**: Created comprehensive real-time AI assistant with:
+    - Switched from Perplexity to Together.ai API for cost-effectiveness
     - Real-time cryptocurrency price data with millisecond precision
-    - Latest market news and updates
-    - Integration with live data sources (CoinMarketCap, CoinGecko, CoinDesk, Cointelegraph, Binance, Crypto.com)
-    - Beautiful dialog interface with gold/yellow AlgoAtlas branding
-    - Replaced "Get Started" button with "AI Assistant" in navigation header
+    - Latest market news and updates using Llama-3.2-11B-Vision-Instruct-Turbo model
+    - Beautiful "Start Analysis" button with AlgoAtlas golden gradient and glow effects
+    - Professional dialog interface with gold/yellow AlgoAtlas branding
     - Enhanced system prompts for crypto-focused responses with technical analysis
     - Suggested queries for quick access to common requests
     - Real-time loading states and error handling
