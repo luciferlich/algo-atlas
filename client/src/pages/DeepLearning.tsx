@@ -9,7 +9,7 @@ const DeepLearning = () => {
       <Navigation />
       
       {/* Hero Section with Gradient */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden mt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-900/30 via-red-900/30 to-pink-900/30"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-orange-500/10 to-red-500/10"></div>
         <div className="relative max-w-7xl mx-auto px-4 text-center">

@@ -9,7 +9,7 @@ const StatisticalModels = () => {
       <Navigation />
       
       {/* Hero Section with Gradient */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden mt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/30 via-emerald-900/30 to-teal-900/30"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-lime-500/10 via-green-500/10 to-emerald-500/10"></div>
         <div className="relative max-w-7xl mx-auto px-4 text-center">
