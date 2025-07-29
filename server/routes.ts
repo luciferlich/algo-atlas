@@ -287,6 +287,115 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(models);
   });
 
+  // AI Chat endpoint for real-time crypto data and news
+  app.post('/api/ai-chat', async (req, res) => {
+    try {
+      const { message } = req.body;
+
+      if (!message || typeof message !== 'string') {
+        return res.status(400).json({ error: 'Message is required' });
+      }
+
+      const apiKey = process.env.PERPLEXITY_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ 
+          error: 'AI service not configured. Please add PERPLEXITY_API_KEY to environment variables.' 
+        });
+      }
+
+      // Enhanced system prompt for crypto-focused AI
+      const systemPrompt = `You are an expert cryptocurrency and financial AI assistant. Your responses should be:
+
+1. REAL-TIME FOCUSED: Always provide current, live data when asked about prices or market conditions
+2. PRECISE: Give exact numbers, percentages, and timestamps when available
+3. COMPREHENSIVE: Include relevant context like 24h changes, market cap, volume
+4. NEWS-AWARE: For news queries, provide the latest headlines with sources and timestamps
+5. ANALYTICAL: Offer brief technical analysis or market insights when appropriate
+
+When asked about prices:
+- Provide current price in USD
+- Include 24h change (percentage and dollar amount)
+- Add market cap and volume if relevant
+- Mention any significant price movements or events
+
+When asked about news:
+- Provide latest headlines (within last 24-48 hours)
+- Include brief summaries
+- Mention sources and approximate timestamps
+- Focus on major developments, regulations, partnerships, or market events
+
+Keep responses concise but informative. Always indicate if data is live/current.`;
+
+      const response = await fetch('https://api.perplexity.ai/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-sonar-small-128k-online',
+          messages: [
+            {
+              role: 'system',
+              content: systemPrompt
+            },
+            {
+              role: 'user',
+              content: message
+            }
+          ],
+          max_tokens: 1000,
+          temperature: 0.2,
+          top_p: 0.9,
+          search_domain_filter: [
+            'coinmarketcap.com',
+            'coingecko.com',
+            'coindesk.com',
+            'cointelegraph.com',
+            'binance.com',
+            'crypto.com'
+          ],
+          return_images: false,
+          return_related_questions: false,
+          search_recency_filter: 'day',
+          stream: false,
+          presence_penalty: 0,
+          frequency_penalty: 1
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('AI API Error:', response.status, errorText);
+        return res.status(500).json({ 
+          error: 'Failed to get AI response. Please try again.' 
+        });
+      }
+
+      const data = await response.json();
+      
+      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+        return res.status(500).json({ 
+          error: 'Invalid response from AI service' 
+        });
+      }
+
+      const aiResponse = data.choices[0].message.content;
+
+      res.json({ 
+        response: aiResponse,
+        timestamp: new Date().toISOString(),
+        sources: data.citations || []
+      });
+
+    } catch (error) {
+      console.error('AI Chat Error:', error);
+      res.status(500).json({ 
+        error: 'Internal server error. Please try again.' 
+      });
+    }
+  });
+
   // Health check
   app.get("/api/health", (req, res) => {
     res.json({ 
@@ -295,7 +404,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       services: {
         ml_training: 'operational',
         monte_carlo: 'operational',
-        portfolio_optimization: 'operational'
+        portfolio_optimization: 'operational',
+        ai_chat: 'operational'
       }
     });
   });

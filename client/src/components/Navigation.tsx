@@ -7,13 +7,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import AIChat from "./AIChat";
 
 const Navigation = () => {
   const [, setLocation] = useLocation();
-
-  const handleGetStarted = () => {
-    setLocation('/contact');
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -125,9 +122,7 @@ const Navigation = () => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button variant="analytics" onClick={handleGetStarted}>
-              Get Started
-            </Button>
+            <AIChat />
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
