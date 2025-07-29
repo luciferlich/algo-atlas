@@ -105,9 +105,9 @@ const ModelShowcase = () => {
                     model.id === 'volatility' ? 'blue' :
                     model.id === 'portfolio' ? 'green' :
                     'yellow'
-                  }`}
+                  } h-full`}
                 >
-                <div className="space-y-6">
+                <div className="space-y-6 flex flex-col h-full">
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 rounded-lg bg-gradient-dark ${model.color}`}>
                       <Icon className="h-6 w-6" />
@@ -118,7 +118,7 @@ const ModelShowcase = () => {
                     </div>
                   </div>
                   
-                  <div className="space-y-3">
+                  <div className="space-y-3 flex-grow">
                     <h4 className="font-medium text-sm uppercase tracking-wide text-muted-foreground">
                       Techniques
                     </h4>
@@ -140,14 +140,16 @@ const ModelShowcase = () => {
                     </div>
                   </div>
                   
-                  <Button 
-                    variant="analytics" 
-                    className="w-full group-hover:bg-primary/20"
-                    onClick={() => handleExploreModel(model.route)}
-                  >
-                    Explore Model
-                    <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  <div className="mt-auto">
+                    <Button 
+                      variant="analytics" 
+                      className="w-full group-hover:bg-primary/20"
+                      onClick={() => handleExploreModel(model.route)}
+                    >
+                      Explore Model
+                      <ChevronRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
                 </div>
                 </Card>
               </motion.div>
