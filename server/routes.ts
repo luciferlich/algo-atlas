@@ -287,7 +287,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(models);
   });
 
-  // AI Chat endpoint for real-time crypto data and news
+  // AI Chat endpoint for real-time crypto data and news (Local AI)
   app.post('/api/ai-chat', async (req, res) => {
     try {
       const { message } = req.body;
@@ -296,92 +296,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: 'Message is required' });
       }
 
-      const apiKey = process.env.TOGETHER_API_KEY || "80698aa1af7a38f9953d6e20750abb4fc83a4906392f0c1ea1aab9cc73124434";
-      if (!apiKey) {
-        return res.status(500).json({ 
-          error: 'AI service not configured. Please add TOGETHER_API_KEY to environment variables.' 
-        });
-      }
-
-      // Enhanced system prompt for crypto-focused AI with real-time data simulation
-      const systemPrompt = `You are AlgoAtlas AI, an expert cryptocurrency and financial AI assistant. Your responses should be:
-
-1. REAL-TIME FOCUSED: Provide current, live-style data when asked about prices or market conditions
-2. PRECISE: Give exact numbers, percentages, and timestamps when available  
-3. COMPREHENSIVE: Include relevant context like 24h changes, market cap, volume
-4. NEWS-AWARE: For news queries, provide the latest headlines with sources and timestamps
-5. ANALYTICAL: Offer brief technical analysis or market insights when appropriate
-
-When asked about prices:
-- Provide realistic current price in USD with recent timestamp
-- Include 24h change (percentage and dollar amount)
-- Add market cap and volume when relevant
-- Mention any significant price movements or events
-- Use realistic data that reflects current market conditions
-
-When asked about news:
-- Provide latest headlines (within last 24-48 hours)
-- Include brief summaries
-- Mention sources and approximate timestamps
-- Focus on major developments, regulations, partnerships, or market events
-
-Keep responses concise but informative. Always indicate timestamp for data freshness.`;
-
-      const response = await fetch('https://api.together.xyz/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo',
-          messages: [
-            {
-              role: 'system',
-              content: systemPrompt
-            },
-            {
-              role: 'user',
-              content: message
-            }
-          ],
-          max_tokens: 1000,
-          temperature: 0.3,
-          top_p: 0.9,
-          stream: false,
-          presence_penalty: 0,
-          frequency_penalty: 0.1
-        }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('AI API Error:', response.status, errorText);
-        return res.status(500).json({ 
-          error: 'Failed to get AI response. Please try again.' 
-        });
-      }
-
-      const data = await response.json();
-      
-      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-        return res.status(500).json({ 
-          error: 'Invalid response from AI service' 
-        });
-      }
-
-      const aiResponse = data.choices[0].message.content;
+      // Import and use local AI
+      const { localAI } = await import('./ai/localAI');
+      const aiResponse = await localAI.processMessage(message);
 
       res.json({ 
         response: aiResponse,
         timestamp: new Date().toISOString(),
-        sources: data.citations || []
+        sources: []
       });
 
     } catch (error) {
-      console.error('AI Chat Error:', error);
+      console.error('Local AI Error:', error);
       res.status(500).json({ 
-        error: 'Internal server error. Please try again.' 
+        error: 'AI service temporarily unavailable. Please try again.' 
       });
     }
   });

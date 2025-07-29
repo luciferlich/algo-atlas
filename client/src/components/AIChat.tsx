@@ -114,7 +114,7 @@ const AIChat = () => {
           variant="default" 
           className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:via-yellow-400 hover:to-amber-500 text-black font-bold px-6 py-2 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] border border-amber-400/30 relative overflow-hidden group"
         >
-          <span className="relative z-10">Start Analysis</span>
+          <span className="relative z-10">AI Assistant</span>
           <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-yellow-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
         </Button>
       </DialogTrigger>
@@ -131,8 +131,8 @@ const AIChat = () => {
         
         <div className="flex flex-col h-full">
           {/* Chat Messages */}
-          <ScrollArea ref={scrollAreaRef} className="flex-1 p-4 mb-4">
-            <div className="space-y-4">
+          <ScrollArea ref={scrollAreaRef} className="flex-1 p-4 mb-4 max-h-[50vh] overflow-y-auto">
+            <div className="space-y-4 min-h-0">
               <AnimatePresence>
                 {messages.map((message) => (
                   <motion.div
@@ -142,7 +142,7 @@ const AIChat = () => {
                     exit={{ opacity: 0, y: -20 }}
                     className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    <div className={`max-w-[80%] ${
+                    <div className={`max-w-[80%] break-words ${
                       message.type === 'user' 
                         ? 'bg-yellow-600/20 border-yellow-600/30' 
                         : 'bg-gray-800/50 border-gray-700/30'
