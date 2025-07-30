@@ -118,7 +118,7 @@ const AIChat = () => {
           className="bg-transparent hover:bg-amber-500/10 border-2 border-amber-400 hover:border-amber-300 text-amber-400 hover:text-amber-300 font-semibold px-6 py-2 transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] rounded-lg"
         >
           <Brain className="h-4 w-4 mr-2 animate-pulse" />
-          <span className="relative z-10">AI Assistant</span>
+          <span className="relative z-10">Neural AI</span>
 
         </Button>
       </DialogTrigger>
@@ -126,7 +126,7 @@ const AIChat = () => {
         <DialogHeader className="border-b border-amber-500/20 pb-4 mb-6">
           <DialogTitle className="text-center">
             <span className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
-              MRKT AI
+              AlgoAtlas Neural AI
             </span>
           </DialogTitle>
         </DialogHeader>
@@ -165,7 +165,7 @@ const AIChat = () => {
                 
                 {/* Text below */}
                 <div className="absolute top-36 left-1/2 transform -translate-x-1/2 text-center">
-                  <p className="text-amber-300 text-lg font-medium">MRKT AI is generating analysis...</p>
+                  <p className="text-amber-300 text-lg font-medium">AlgoAtlas Neural AI is generating analysis...</p>
                   <div className="flex items-center justify-center gap-1 mt-2">
                     <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
                     <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '200ms'}}></div>
