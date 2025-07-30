@@ -164,8 +164,8 @@ const AIChat = () => {
                 </div>
                 
                 {/* Text below */}
-                <div className="absolute top-36 left-1/2 transform -translate-x-1/2 text-center">
-                  <p className="text-amber-300 text-lg font-medium">AlgoAtlas Neural AI is generating analysis...</p>
+                <div className="absolute top-40 left-1/2 transform -translate-x-1/2 text-center w-full max-w-md px-4">
+                  <p className="text-amber-300 text-lg font-medium">Generating analysis...</p>
                   <div className="flex items-center justify-center gap-1 mt-2">
                     <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
                     <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '200ms'}}></div>
