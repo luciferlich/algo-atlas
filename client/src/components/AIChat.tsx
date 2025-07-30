@@ -133,11 +133,8 @@ const AIChat = () => {
               </div>
             </div>
             <span className="bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent font-bold">
-              AlgoAtlas AI is generating analysis...
+              AlgoAtlas Neural AI
             </span>
-            <Badge variant="secondary" className="bg-amber-600/20 text-amber-300 border-amber-500/30 animate-pulse">
-              • Processing
-            </Badge>
           </DialogTitle>
         </DialogHeader>
         
@@ -292,13 +289,10 @@ const AIChat = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about crypto prices, news, or market analysis..."
-                className="pr-16 bg-gray-900/80 border-amber-400/30 focus:border-amber-300/60 text-white placeholder:text-amber-300/50 rounded-xl backdrop-blur-sm h-12"
+                className="bg-gray-900/80 border-amber-400/30 focus:border-amber-300/60 text-white placeholder:text-amber-300/50 rounded-xl backdrop-blur-sm h-12"
                 disabled={isLoading}
               />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-2">
-                <TrendingUp className="h-4 w-4 text-green-400 animate-pulse" />
-                <Newspaper className="h-4 w-4 text-blue-400 animate-pulse" />
-              </div>
+
             </div>
             <Button 
               onClick={handleSendMessage}
