@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, TrendingUp, Newspaper, Loader2, Sparkles, Bot, Brain } from "lucide-react";
+import { Send, TrendingUp, Newspaper, Loader2, Sparkles, Bot, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -22,7 +22,7 @@ const AIChat = () => {
     {
       id: '1',
       type: 'ai',
-      content: 'Hello! I\'m your AI assistant specialized in real-time cryptocurrency data and market news. Ask me about any coin price or latest market updates!',
+      content: 'Welcome to AlgoAtlas AI! I can help you with cryptocurrency analysis, market insights, and financial data. What would you like to explore today?',
       timestamp: new Date()
     }
   ]);
@@ -72,18 +72,14 @@ const AIChat = () => {
 
       const data = await response.json();
 
-      // Add delay to show the brain animation
-      setTimeout(() => {
-        const aiMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          type: 'ai',
-          content: data.response,
-          timestamp: new Date()
-        };
+      const aiMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'ai',
+        content: data.response,
+        timestamp: new Date()
+      };
 
-        setMessages(prev => [...prev, aiMessage]);
-        setIsLoading(false);
-      }, 3000);
+      setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -117,77 +113,31 @@ const AIChat = () => {
           variant="outline" 
           className="bg-transparent hover:bg-amber-500/10 border-2 border-amber-400 hover:border-amber-300 text-amber-400 hover:text-amber-300 font-semibold px-6 py-2 transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] rounded-lg"
         >
-          <Brain className="h-4 w-4 mr-2 animate-pulse" />
-          <span className="relative z-10">AI Assistant</span>
-
+          <MessageCircle className="h-4 w-4 mr-2" />
+          <span className="relative z-10">AI Chat</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-5xl h-[85vh] bg-gradient-to-br from-gray-900 via-amber-900/20 to-black border border-amber-500/30 shadow-2xl">
-        <DialogHeader className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-yellow-500/20 to-amber-500/10 rounded-t-lg"></div>
-          <DialogTitle className="flex items-center gap-3 text-amber-300 relative z-10">
-            <div className="relative">
-              <Brain className="h-6 w-6 animate-pulse text-amber-400" />
-              <div className="absolute inset-0 animate-ping">
-                <Brain className="h-6 w-6 text-amber-400/30" />
-              </div>
-            </div>
-            <span className="bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent font-bold">
-              AlgoAtlas AI is generating analysis...
-            </span>
-            <Badge variant="secondary" className="bg-amber-600/20 text-amber-300 border-amber-500/30 animate-pulse">
-              • Processing
-            </Badge>
+      <DialogContent className="max-w-4xl h-[80vh] bg-black/95 backdrop-blur-sm border border-amber-500/30 shadow-2xl">
+        <DialogHeader className="border-b border-amber-500/20 pb-4">
+          <DialogTitle className="flex items-center gap-3 text-amber-400 text-xl font-bold">
+            <MessageCircle className="h-6 w-6 text-amber-400" />
+            AlgoAtlas AI Assistant
+            {isLoading && (
+              <Badge variant="secondary" className="bg-amber-600/20 text-amber-300 border-amber-500/30">
+                <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                Analyzing
+              </Badge>
+            )}
           </DialogTitle>
         </DialogHeader>
         
-        <div className="flex flex-col h-full relative">
-          {/* Neural Network Background */}
+        <div className="flex flex-col h-full">{/* Clean background with subtle pattern */}
           <div className="absolute inset-0 opacity-5">
-            <svg className="w-full h-full" viewBox="0 0 400 300">
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" className="text-amber-400"/>
-            </svg>
+            <div className="w-full h-full bg-gradient-to-br from-amber-500/10 to-transparent"></div>
           </div>
-          
-          {/* AI Status Indicator - Circular Design like MRKT AI */}
-          {isLoading && (
-            <div className="absolute inset-0 z-20 bg-black/90 backdrop-blur-md flex items-center justify-center">
-              <div className="relative">
-                {/* Outer rotating ring */}
-                <div className="w-32 h-32 rounded-full border-2 border-amber-500/20 relative">
-                  <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-amber-400 animate-spin"></div>
-                </div>
-                
-                {/* Inner pulsing ring */}
-                <div className="absolute inset-4 w-24 h-24 rounded-full border border-amber-400/40 animate-pulse">
-                  <div className="absolute inset-2 w-20 h-20 rounded-full border border-amber-300/30 animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                </div>
-                
-                {/* Center brain icon */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Brain className="h-8 w-8 text-amber-400 animate-pulse" />
-                </div>
-                
-                {/* Text below */}
-                <div className="absolute top-36 left-1/2 transform -translate-x-1/2 text-center">
-                  <p className="text-amber-300 text-lg font-medium">MRKT AI is generating analysis...</p>
-                  <div className="flex items-center justify-center gap-1 mt-2">
-                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '200ms'}}></div>
-                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '400ms'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Chat Messages */}
-          <ScrollArea ref={scrollAreaRef} className="flex-1 p-6 mb-4 max-h-[55vh] overflow-y-auto">
+          <ScrollArea ref={scrollAreaRef} className="flex-1 p-6 mb-4 max-h-[60vh] overflow-y-auto">
             <div className="space-y-6 min-h-0">
               <AnimatePresence>
                 {messages.map((message) => (
@@ -205,16 +155,13 @@ const AIChat = () => {
                     } border rounded-2xl p-4 backdrop-blur-sm`}>
                       <div className="flex items-start gap-3">
                         {message.type === 'ai' && (
-                          <div className="relative flex-shrink-0">
-                            <Brain className="h-6 w-6 text-amber-400 animate-pulse" />
-                            <div className="absolute inset-0 animate-ping opacity-30">
-                              <Brain className="h-6 w-6 text-amber-400" />
-                            </div>
+                          <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Bot className="h-4 w-4 text-black" />
                           </div>
                         )}
                         {message.type === 'user' && (
-                          <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <span className="text-black text-xs font-bold">U</span>
+                          <div className="w-8 h-8 bg-gradient-to-r from-gray-600 to-gray-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-sm font-bold">U</span>
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
@@ -238,19 +185,11 @@ const AIChat = () => {
                 >
                   <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-amber-300/20 border rounded-2xl p-4 backdrop-blur-sm shadow-lg shadow-amber-500/5">
                     <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <Brain className="h-6 w-6 text-amber-400 animate-pulse" />
-                        <div className="absolute inset-0 animate-ping opacity-30">
-                          <Brain className="h-6 w-6 text-amber-400" />
-                        </div>
+                      <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Loader2 className="h-4 w-4 text-black animate-spin" />
                       </div>
                       <div className="flex items-center gap-2">
-                        <div className="flex gap-1">
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
-                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
-                        </div>
-                        <span className="text-sm text-amber-300">Neural processing in progress...</span>
+                        <span className="text-sm text-amber-300">Analyzing your request...</span>
                       </div>
                     </div>
                   </div>
@@ -267,7 +206,7 @@ const AIChat = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <p className="text-sm text-amber-300/70 mb-3 font-medium">Quick neural queries:</p>
+              <p className="text-sm text-amber-300/70 mb-3 font-medium">Quick queries:</p>
               <div className="grid grid-cols-2 gap-3">
                 {suggestedQueries.map((query, index) => (
                   <Button
@@ -285,7 +224,7 @@ const AIChat = () => {
           )}
 
           {/* Input Area */}
-          <div className="flex gap-3 p-6 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
+          <div className="flex gap-3 p-6 border-t border-amber-500/20 bg-black/50 backdrop-blur-sm">
             <div className="flex-1 relative">
               <Input
                 value={input}
