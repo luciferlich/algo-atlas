@@ -143,27 +143,38 @@ const AIChat = () => {
             </svg>
           </div>
           
-          {/* AI Status Indicator - Large Radiating Brain Animation */}
+          {/* AI Status Indicator - Radiating Brain Animation */}
           {isLoading && (
             <div className="absolute inset-0 z-20 bg-black/95 backdrop-blur-md flex items-center justify-center">
               <div className="relative w-80 h-80 flex items-center justify-center">
-                {/* Multiple radiating waves */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full border-2 border-amber-400/40 animate-ping" style={{animationDuration: '2s'}}></div>
+                {/* Radiating lines from brain */}
+                <div className="absolute inset-0 animate-spin" style={{animationDuration: '8s'}}>
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-0.5 bg-gradient-to-r from-amber-400 to-transparent"
+                      style={{
+                        height: '120px',
+                        left: '50%',
+                        top: '50%',
+                        transformOrigin: 'bottom center',
+                        transform: `translate(-50%, -100%) rotate(${i * 45}deg)`,
+                        opacity: 0.6,
+                        animation: `pulse 2s ease-in-out infinite`,
+                        animationDelay: `${i * 0.25}s`
+                      }}
+                    />
+                  ))}
                 </div>
+                
+                {/* Inner circle */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-48 h-48 rounded-full border-2 border-amber-400/25 animate-ping" style={{animationDuration: '2.5s', animationDelay: '0.3s'}}></div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 rounded-full border border-amber-400/15 animate-ping" style={{animationDuration: '3s', animationDelay: '0.6s'}}></div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-80 h-80 rounded-full border border-amber-400/10 animate-ping" style={{animationDuration: '3.5s', animationDelay: '0.9s'}}></div>
+                  <div className="w-24 h-24 rounded-full border border-amber-400/30 animate-pulse"></div>
                 </div>
                 
                 {/* Large center brain icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Brain className="h-16 w-16 text-amber-400 animate-pulse drop-shadow-[0_0_10px_rgba(245,158,11,0.8)]" style={{animationDuration: '1.5s'}} />
+                  <Brain className="h-12 w-12 text-amber-400 animate-pulse drop-shadow-[0_0_15px_rgba(245,158,11,0.9)]" style={{animationDuration: '1.5s'}} />
                 </div>
               </div>
             </div>
