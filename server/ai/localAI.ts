@@ -363,59 +363,63 @@ How else can I assist you today?`;
 
   // Handler methods for different query types
   private async handlePriceQuery(message: string, timestamp: string): Promise<string> {
-    // Extract coin mention from message
-    const coinMap = {
-      'bitcoin': 'bitcoin',
-      'btc': 'bitcoin',
-      'ethereum': 'ethereum', 
-      'eth': 'ethereum',
-      'solana': 'solana',
-      'sol': 'solana',
-      'cardano': 'cardano',
-      'ada': 'cardano',
-      'avalanche': 'avalanche',
-      'avax': 'avalanche',
-      'polkadot': 'polkadot',
-      'dot': 'polkadot',
-      'polygon': 'matic-network',
-      'matic': 'matic-network',
-      'chainlink': 'chainlink',
-      'link': 'chainlink'
-    };
+    const coinId = await this.extractCoinId(message);
+    
+    if (!coinId) {
+      // Try to extract any potential coin symbol for better error message
+      const words = message.toLowerCase().split(/\s+/);
+      const potentialSymbol = words.find(word => word.length >= 2 && word.match(/^[a-z0-9]+$/));
+      
+      if (potentialSymbol) {
+        return `❌ **Cryptocurrency "${potentialSymbol.toUpperCase()}" not found** (${timestamp})
 
-    let coinId = 'bitcoin'; // default
-    for (const [keyword, id] of Object.entries(coinMap)) {
-      if (message.includes(keyword)) {
-        coinId = id;
-        break;
+I couldn't find information for "${potentialSymbol.toUpperCase()}". Please check the spelling or try using the full name.
+
+**Popular cryptocurrencies I can help with:**
+• Bitcoin (BTC) • Ethereum (ETH) • Solana (SOL)
+• Dogecoin (DOGE) • Cardano (ADA) • XRP
+• Shiba Inu (SHIB) • Pepe (PEPE) • Bonk (BONK)
+• Dogwifhat (WIF) • And many more!
+
+Try asking: "What's the price of [coin name]?"`;
       }
+      
+      return this.handleGeneralQuery(timestamp);
     }
 
     const priceData = await this.getPrice(coinId);
+    const coinInfo = await this.getCoinDescription(coinId);
     
     if (!priceData || !priceData[coinId]) {
-      return `❌ **Price Data Unavailable** (${timestamp})
+      return `❌ **Price data unavailable for ${coinId}** (${timestamp})
       
-Unable to fetch current price data. Please try again in a moment.`;
+Sorry, I couldn't fetch the current price data. The coin might not be available on CoinGecko or there might be a temporary API issue. Please try again later.`;
     }
 
-    const coin = priceData[coinId];
-    const changeIcon = coin.usd_24h_change > 0 ? '💹' : '📉';
+    const data = priceData[coinId];
+    const price = data.usd;
+    const change24h = data.usd_24h_change || 0;
+    const marketCap = data.usd_market_cap;
     
-    return `${changeIcon} **${coinId.charAt(0).toUpperCase() + coinId.slice(1)} Price** (${timestamp})
+    return `💰 **${coinInfo?.name || coinId} (${coinInfo?.symbol?.toUpperCase() || coinId.toUpperCase()}) Price Analysis** (${timestamp})
 
-**Current Price:** $${coin.usd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 6})}
-**24h Change:** ${coin.usd_24h_change > 0 ? '+' : ''}${coin.usd_24h_change?.toFixed(2) || 0}%
-**Market Cap:** $${coin.usd_market_cap ? (coin.usd_market_cap / 1e9).toFixed(2) + 'B' : 'N/A'}
-**Last Updated:** ${new Date(coin.last_updated_at * 1000).toLocaleTimeString()}
+**Current Price:** $${price.toFixed(price < 1 ? 6 : 2)}
+**24h Change:** ${change24h > 0 ? '+' : ''}${change24h.toFixed(2)}%
+**Market Cap:** $${marketCap ? (marketCap / 1000000000).toFixed(2) + 'B' : 'N/A'}
 
-📊 **Quick Analysis:** ${coin.usd_24h_change > 5 ? 'Strong bullish momentum' : 
-                         coin.usd_24h_change > 0 ? 'Mild upward trend' :
-                         coin.usd_24h_change > -5 ? 'Consolidation phase' : 'Bearish pressure'}`;
+**Technical Analysis:**
+${change24h > 5 ? '🚀 Strong bullish momentum' : 
+  change24h > 0 ? '📈 Positive trend' : 
+  change24h > -5 ? '📉 Minor decline' : '🔻 Bearish pressure'}
+
+**Market Sentiment:** ${change24h > 0 ? 'Optimistic' : 'Cautious'}
+
+${coinInfo?.description && coinInfo.description !== "No description available." ? 
+  `**About:** ${coinInfo.description.substring(0, 200)}...` : ''}`;
   }
 
   private async handleATHQuery(message: string, timestamp: string): Promise<string> {
-    const coinId = this.extractCoinId(message) || 'bitcoin';
+    const coinId = await this.extractCoinId(message) || 'bitcoin';
     const athData = await this.getAllTimeHigh(coinId);
     
     if (!athData || !athData.ath) {
@@ -430,7 +434,7 @@ Unable to fetch current price data. Please try again in a moment.`;
   }
 
   private async handleATLQuery(message: string, timestamp: string): Promise<string> {
-    const coinId = this.extractCoinId(message) || 'bitcoin';
+    const coinId = await this.extractCoinId(message) || 'bitcoin';
     const atlData = await this.getAllTimeLow(coinId);
     
     if (!atlData || !atlData.atl) {
@@ -691,8 +695,28 @@ Hello! I'm your enhanced cryptocurrency analysis assistant with real-time data. 
 How can I assist you with your crypto analysis today?`;
   }
 
+  // Search for cryptocurrency by symbol or name
+  private async searchCoin(query: string): Promise<string | null> {
+    try {
+      const response = await axios.get(`${this.COINGECKO_API}/search`, {
+        params: { query: query.toLowerCase() }
+      });
+      
+      const { coins } = response.data;
+      if (coins && coins.length > 0) {
+        // Return the first match (usually most relevant)
+        return coins[0].id;
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Error searching for coin:', error);
+      return null;
+    }
+  }
+
   // Utility methods
-  private extractCoinId(message: string): string | null {
+  private async extractCoinId(message: string): Promise<string | null> {
     const coinMap: {[key: string]: string} = {
       'bitcoin': 'bitcoin', 'btc': 'bitcoin',
       'ethereum': 'ethereum', 'eth': 'ethereum',
@@ -701,14 +725,34 @@ How can I assist you with your crypto analysis today?`;
       'avalanche': 'avalanche', 'avax': 'avalanche',
       'polkadot': 'polkadot', 'dot': 'polkadot',
       'polygon': 'matic-network', 'matic': 'matic-network',
-      'chainlink': 'chainlink', 'link': 'chainlink'
+      'chainlink': 'chainlink', 'link': 'chainlink',
+      'wif': 'dogwifcoin', 'dogwifhat': 'dogwifcoin',
+      'doge': 'dogecoin', 'dogecoin': 'dogecoin',
+      'shib': 'shiba-inu', 'shiba': 'shiba-inu',
+      'pepe': 'pepe', 'bonk': 'bonk',
+      'xrp': 'ripple', 'ripple': 'ripple',
+      'bnb': 'binancecoin',
+      'usdt': 'tether', 'usdc': 'usd-coin'
     };
 
+    // First check the hardcoded map for quick lookups
     for (const [keyword, id] of Object.entries(coinMap)) {
-      if (message.includes(keyword)) {
+      if (message.toLowerCase().includes(keyword)) {
         return id;
       }
     }
+
+    // If not found in hardcoded map, search via API
+    const words = message.toLowerCase().split(/\s+/);
+    for (const word of words) {
+      if (word.length >= 2) { // Only search for words with 2+ characters
+        const coinId = await this.searchCoin(word);
+        if (coinId) {
+          return coinId;
+        }
+      }
+    }
+    
     return null;
   }
 
