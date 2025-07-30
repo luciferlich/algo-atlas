@@ -112,27 +112,27 @@ const AIChat = () => {
       <DialogTrigger asChild>
         <Button 
           variant="default" 
-          className="bg-gradient-to-r from-purple-600 via-violet-600 to-purple-700 hover:from-purple-500 hover:via-violet-500 hover:to-purple-600 text-white font-bold px-6 py-2 transition-all duration-300 shadow-[0_0_20px_rgba(147,51,234,0.4)] hover:shadow-[0_0_30px_rgba(147,51,234,0.6)] border border-purple-400/30 relative overflow-hidden group"
+          className="bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700 hover:from-amber-500 hover:via-yellow-500 hover:to-amber-600 text-black font-bold px-6 py-2 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] border border-amber-400/30 relative overflow-hidden group"
         >
           <Brain className="h-4 w-4 mr-2 animate-pulse" />
           <span className="relative z-10">AI Assistant</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-violet-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-yellow-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-5xl h-[85vh] bg-gradient-to-br from-gray-900 via-purple-900/20 to-black border border-purple-500/30 shadow-2xl">
+      <DialogContent className="max-w-5xl h-[85vh] bg-gradient-to-br from-gray-900 via-amber-900/20 to-black border border-amber-500/30 shadow-2xl">
         <DialogHeader className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-violet-500/20 to-purple-500/10 rounded-t-lg"></div>
-          <DialogTitle className="flex items-center gap-3 text-purple-300 relative z-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-yellow-500/20 to-amber-500/10 rounded-t-lg"></div>
+          <DialogTitle className="flex items-center gap-3 text-amber-300 relative z-10">
             <div className="relative">
-              <Brain className="h-6 w-6 animate-pulse text-purple-400" />
+              <Brain className="h-6 w-6 animate-pulse text-amber-400" />
               <div className="absolute inset-0 animate-ping">
-                <Brain className="h-6 w-6 text-purple-400/30" />
+                <Brain className="h-6 w-6 text-amber-400/30" />
               </div>
             </div>
-            <span className="bg-gradient-to-r from-purple-300 to-violet-300 bg-clip-text text-transparent font-bold">
-              AlgoAtlas Neural AI
+            <span className="bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent font-bold">
+              AlgoAtlas AI is generating analysis...
             </span>
-            <Badge variant="secondary" className="bg-purple-600/20 text-purple-300 border-purple-500/30 animate-pulse">
+            <Badge variant="secondary" className="bg-amber-600/20 text-amber-300 border-amber-500/30 animate-pulse">
               • Processing
             </Badge>
           </DialogTitle>
@@ -147,19 +147,38 @@ const AIChat = () => {
                   <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1"/>
                 </pattern>
               </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" className="text-purple-400"/>
+              <rect width="100%" height="100%" fill="url(#grid)" className="text-amber-400"/>
             </svg>
           </div>
           
-          {/* AI Status Indicator */}
+          {/* AI Status Indicator - Circular Design like MRKT AI */}
           {isLoading && (
-            <div className="absolute top-4 right-4 z-20">
-              <div className="flex items-center gap-2 bg-purple-900/80 backdrop-blur-sm rounded-full px-4 py-2 border border-purple-400/30">
-                <div className="relative">
-                  <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-3 h-3 bg-purple-400 rounded-full animate-ping"></div>
+            <div className="absolute inset-0 z-20 bg-black/90 backdrop-blur-md flex items-center justify-center">
+              <div className="relative">
+                {/* Outer rotating ring */}
+                <div className="w-32 h-32 rounded-full border-2 border-amber-500/20 relative">
+                  <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-amber-400 animate-spin"></div>
                 </div>
-                <span className="text-purple-300 text-sm font-medium">AI is generating analysis...</span>
+                
+                {/* Inner pulsing ring */}
+                <div className="absolute inset-4 w-24 h-24 rounded-full border border-amber-400/40 animate-pulse">
+                  <div className="absolute inset-2 w-20 h-20 rounded-full border border-amber-300/30 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                </div>
+                
+                {/* Center brain icon */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Brain className="h-8 w-8 text-amber-400 animate-pulse" />
+                </div>
+                
+                {/* Text below */}
+                <div className="absolute top-36 left-1/2 transform -translate-x-1/2 text-center">
+                  <p className="text-amber-300 text-lg font-medium">MRKT AI is generating analysis...</p>
+                  <div className="flex items-center justify-center gap-1 mt-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '200ms'}}></div>
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '400ms'}}></div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -178,27 +197,27 @@ const AIChat = () => {
                   >
                     <div className={`max-w-[85%] break-words ${
                       message.type === 'user' 
-                        ? 'bg-gradient-to-r from-purple-600/20 to-violet-600/20 border-purple-400/30 shadow-lg shadow-purple-500/10' 
-                        : 'bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-purple-300/20 shadow-lg shadow-purple-500/5'
+                        ? 'bg-gradient-to-r from-amber-600/20 to-yellow-600/20 border-amber-400/30 shadow-lg shadow-amber-500/10' 
+                        : 'bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-amber-300/20 shadow-lg shadow-amber-500/5'
                     } border rounded-2xl p-4 backdrop-blur-sm`}>
                       <div className="flex items-start gap-3">
                         {message.type === 'ai' && (
                           <div className="relative flex-shrink-0">
-                            <Brain className="h-6 w-6 text-purple-400 animate-pulse" />
+                            <Brain className="h-6 w-6 text-amber-400 animate-pulse" />
                             <div className="absolute inset-0 animate-ping opacity-30">
-                              <Brain className="h-6 w-6 text-purple-400" />
+                              <Brain className="h-6 w-6 text-amber-400" />
                             </div>
                           </div>
                         )}
                         {message.type === 'user' && (
-                          <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xs font-bold">U</span>
+                          <div className="w-6 h-6 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span className="text-black text-xs font-bold">U</span>
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-white/90 whitespace-pre-wrap leading-relaxed">{message.content}</p>
-                          <p className="text-xs text-purple-300/60 mt-2 flex items-center gap-1">
-                            <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
+                          <p className="text-xs text-amber-300/60 mt-2 flex items-center gap-1">
+                            <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
                             {message.timestamp.toLocaleTimeString()}
                           </p>
                         </div>
@@ -214,21 +233,21 @@ const AIChat = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-purple-300/20 border rounded-2xl p-4 backdrop-blur-sm shadow-lg shadow-purple-500/5">
+                  <div className="bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-amber-300/20 border rounded-2xl p-4 backdrop-blur-sm shadow-lg shadow-amber-500/5">
                     <div className="flex items-center gap-3">
                       <div className="relative">
-                        <Brain className="h-6 w-6 text-purple-400 animate-pulse" />
+                        <Brain className="h-6 w-6 text-amber-400 animate-pulse" />
                         <div className="absolute inset-0 animate-ping opacity-30">
-                          <Brain className="h-6 w-6 text-purple-400" />
+                          <Brain className="h-6 w-6 text-amber-400" />
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="flex gap-1">
-                          <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                          <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
-                          <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
+                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
+                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></div>
+                          <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
                         </div>
-                        <span className="text-sm text-purple-300">Neural processing in progress...</span>
+                        <span className="text-sm text-amber-300">Neural processing in progress...</span>
                       </div>
                     </div>
                   </div>
@@ -245,14 +264,14 @@ const AIChat = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <p className="text-sm text-purple-300/70 mb-3 font-medium">Quick neural queries:</p>
+              <p className="text-sm text-amber-300/70 mb-3 font-medium">Quick neural queries:</p>
               <div className="grid grid-cols-2 gap-3">
                 {suggestedQueries.map((query, index) => (
                   <Button
                     key={index}
                     variant="outline"
                     size="sm"
-                    className="text-xs bg-gradient-to-r from-purple-900/30 to-violet-900/30 border-purple-400/30 hover:from-purple-800/50 hover:to-violet-800/50 hover:border-purple-300/50 text-purple-200 transition-all duration-300 backdrop-blur-sm"
+                    className="text-xs bg-gradient-to-r from-amber-900/30 to-yellow-900/30 border-amber-400/30 hover:from-amber-800/50 hover:to-yellow-800/50 hover:border-amber-300/50 text-amber-200 transition-all duration-300 backdrop-blur-sm"
                     onClick={() => setInput(query)}
                   >
                     {query}
@@ -263,14 +282,14 @@ const AIChat = () => {
           )}
 
           {/* Input Area */}
-          <div className="flex gap-3 p-6 border-t border-purple-500/20 bg-gradient-to-r from-gray-900/50 to-purple-900/20 backdrop-blur-sm">
+          <div className="flex gap-3 p-6 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
             <div className="flex-1 relative">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about crypto prices, news, or market analysis..."
-                className="pr-16 bg-gray-900/80 border-purple-400/30 focus:border-purple-300/60 text-white placeholder:text-purple-300/50 rounded-xl backdrop-blur-sm h-12"
+                className="pr-16 bg-gray-900/80 border-amber-400/30 focus:border-amber-300/60 text-white placeholder:text-amber-300/50 rounded-xl backdrop-blur-sm h-12"
                 disabled={isLoading}
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-2">
@@ -281,7 +300,7 @@ const AIChat = () => {
             <Button 
               onClick={handleSendMessage}
               disabled={!input.trim() || isLoading}
-              className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white shadow-lg shadow-purple-500/25 rounded-xl h-12 px-6 transition-all duration-300"
+              className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black shadow-lg shadow-amber-500/25 rounded-xl h-12 px-6 transition-all duration-300"
             >
               <Send className="h-5 w-5" />
             </Button>
