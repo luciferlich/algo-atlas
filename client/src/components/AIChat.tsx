@@ -123,16 +123,16 @@ const AIChat = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-5xl h-[85vh] bg-gradient-to-br from-gray-900 via-amber-900/20 to-black border border-amber-500/30 shadow-2xl">
-        <DialogHeader className="relative">
+        <DialogHeader className="relative pb-4">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-yellow-500/20 to-amber-500/10 rounded-t-lg"></div>
-          <DialogTitle className="flex items-center gap-3 text-amber-300 relative z-10">
-            <div className="relative">
-              <Brain className="h-6 w-6 animate-pulse text-amber-400" />
+          <DialogTitle className="flex items-center gap-3 text-amber-300 relative z-10 pr-8">
+            <div className="relative flex-shrink-0">
+              <Brain className="h-5 w-5 animate-pulse text-amber-400" />
               <div className="absolute inset-0 animate-ping">
-                <Brain className="h-6 w-6 text-amber-400/30" />
+                <Brain className="h-5 w-5 text-amber-400/30" />
               </div>
             </div>
-            <span className="bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent font-bold">
+            <span className="bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent font-semibold text-lg">
               AlgoAtlas Neural AI
             </span>
           </DialogTitle>
