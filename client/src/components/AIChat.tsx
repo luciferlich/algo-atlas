@@ -165,11 +165,6 @@ const AIChat = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Brain className="h-16 w-16 text-amber-400 animate-pulse drop-shadow-[0_0_10px_rgba(245,158,11,0.8)]" style={{animationDuration: '1.5s'}} />
                 </div>
-                
-                {/* Text below with more spacing */}
-                <div className="absolute top-56 left-1/2 transform -translate-x-1/2 text-center">
-                  <p className="text-amber-300 text-xl font-medium">Generating analysis...</p>
-                </div>
               </div>
             </div>
           )}
