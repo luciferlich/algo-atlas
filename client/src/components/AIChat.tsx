@@ -107,12 +107,16 @@ const AIChat = () => {
   const suggestedQueries = [
     "💰 Bitcoin price and analysis",
     "📈 Top crypto gainers today", 
+    "📉 Top crypto losers today",
     "😨 Market fear & greed index",
     "⛽ Ethereum gas fees tracker",
     "🔥 Trending cryptocurrencies",
     "👑 Bitcoin dominance analysis",
     "📊 BTC/ETH order book data",
-    "💼 Portfolio recommendations"
+    "💼 Portfolio recommendations",
+    "🏆 Bitcoin all-time high",
+    "📰 Latest crypto news",
+    "📊 Top 10 cryptocurrencies"
   ];
 
   return (

@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove white selection borders and outlines globally */
+*,
+*::before,
+*::after {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+*:focus,
+*:focus-visible,
+*:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Specifically target loading screen elements */
+.loading-overlay *,
+.loading-overlay *::before,
+.loading-overlay *::after {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

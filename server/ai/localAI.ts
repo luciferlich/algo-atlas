@@ -279,7 +279,7 @@ class CryptoAI {
   // Enhanced message processing with real API data
   public async processMessage(message: string): Promise<string> {
     const lowercaseMessage = message.toLowerCase();
-    const timestamp = new Date().toLocaleString();
+    const timestamp = "";
 
     try {
       // Price queries
@@ -329,7 +329,7 @@ class CryptoAI {
       }
 
       // Order book
-      if (lowercaseMessage.includes('order book') || lowercaseMessage.includes('orderbook')) {
+      if (lowercaseMessage.includes('order book') || lowercaseMessage.includes('orderbook') || (lowercaseMessage.includes('order') && (lowercaseMessage.includes('btc') || lowercaseMessage.includes('eth') || lowercaseMessage.includes('bitcoin') || lowercaseMessage.includes('ethereum')))) {
         return await this.handleOrderBookQuery(lowercaseMessage, timestamp);
       }
 
@@ -371,7 +371,7 @@ How else can I assist you today?`;
       const potentialSymbol = words.find(word => word.length >= 2 && word.match(/^[a-z0-9]+$/));
       
       if (potentialSymbol) {
-        return `❌ **Cryptocurrency "${potentialSymbol.toUpperCase()}" not found** (${timestamp})
+        return `❌ **Cryptocurrency "${potentialSymbol.toUpperCase()}" not found**
 
 I couldn't find information for "${potentialSymbol.toUpperCase()}". Please check the spelling or try using the full name.
 
@@ -401,7 +401,7 @@ Sorry, I couldn't fetch the current price data. The coin might not be available 
     const change24h = data.usd_24h_change || 0;
     const marketCap = data.usd_market_cap;
     
-    return `💰 **${coinInfo?.name || coinId} (${coinInfo?.symbol?.toUpperCase() || coinId.toUpperCase()}) Price Analysis** (${timestamp})
+    return `💰 **${coinInfo?.name || coinId} (${coinInfo?.symbol?.toUpperCase() || coinId.toUpperCase()}) Price Analysis**
 
 **Current Price:** $${price.toFixed(price < 1 ? 6 : 2)}
 **24h Change:** ${change24h > 0 ? '+' : ''}${change24h.toFixed(2)}%
@@ -594,10 +594,12 @@ Current market shows ${dominance.btc_dominance > 50 ? 'Bitcoin dominance' : domi
     const orderbook = await this.checkOrderBook(symbol, 5);
     
     if (!orderbook) {
-      return `❌ **Order Book Data Unavailable** (${timestamp})`;
+      return `❌ **Order Book Data Unavailable**
+      
+Sorry, I couldn't fetch the current order book data. Please try again later.`;
     }
 
-    return `📊 **${orderbook.symbol} Order Book** (${timestamp})
+    return `📊 **${orderbook.symbol} Order Book**
 
 ${orderbook.order_book_summary}
 
