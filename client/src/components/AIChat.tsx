@@ -291,7 +291,7 @@ const AIChat = () => {
           )}
 
           {/* Input Area */}
-          <div className="flex gap-3 pt-4 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
+          <div className="flex gap-3 pt-4 mt-2 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
             <div className="flex-1 relative">
               <Input
                 value={input}

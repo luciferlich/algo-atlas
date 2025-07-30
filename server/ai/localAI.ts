@@ -296,21 +296,22 @@ class CryptoAI {
         return await this.handleATLQuery(lowercaseMessage, timestamp);
       }
 
-      // Market analysis queries
-      if (lowercaseMessage.includes('top') || lowercaseMessage.includes('best')) {
-        return await this.handleTopCoinsQuery(timestamp);
-      }
-
-      if (lowercaseMessage.includes('gainers') || lowercaseMessage.includes('winners')) {
+      // Market analysis queries - improved detection with priority order
+      if (lowercaseMessage.includes('gainers') || lowercaseMessage.includes('winners') || lowercaseMessage.includes('gaining') || (lowercaseMessage.includes('top') && lowercaseMessage.includes('gain'))) {
         return await this.handleGainersQuery(timestamp);
       }
 
-      if (lowercaseMessage.includes('losers') || lowercaseMessage.includes('worst')) {
+      if (lowercaseMessage.includes('losers') || lowercaseMessage.includes('worst') || lowercaseMessage.includes('falling') || lowercaseMessage.includes('losing') || (lowercaseMessage.includes('top') && lowercaseMessage.includes('los'))) {
         return await this.handleLosersQuery(timestamp);
       }
 
-      if (lowercaseMessage.includes('trending') || lowercaseMessage.includes('popular')) {
+      if (lowercaseMessage.includes('trending') || lowercaseMessage.includes('popular') || lowercaseMessage.includes('hot coin') || lowercaseMessage.includes('trend')) {
         return await this.handleTrendingQuery(timestamp);
+      }
+
+      // Top coins query last to avoid conflicts
+      if ((lowercaseMessage.includes('top') && !lowercaseMessage.includes('price') && (lowercaseMessage.includes('coin') || lowercaseMessage.includes('crypto') || lowercaseMessage.includes('10'))) || lowercaseMessage.includes('best coin')) {
+        return await this.handleTopCoinsQuery(timestamp);
       }
 
       // Market sentiment
@@ -472,10 +473,12 @@ ${coinInfo?.description && coinInfo.description !== "No description available." 
     const gainers = await this.getTopGainers(10);
     
     if (!gainers || !Array.isArray(gainers)) {
-      return `❌ **Gainers Data Unavailable** (${timestamp})`;
+      return `❌ **Gainers Data Unavailable**
+      
+Sorry, I couldn't fetch the current market data. Please try again later.`;
     }
 
-    let response = `💹 **Top 10 24h Gainers** (${timestamp})\n\n`;
+    let response = `💹 **Top 10 24h Gainers**\n\n`;
     
     gainers.forEach((coin: any, index: number) => {
       response += `${index + 1}. 🔥 **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
@@ -490,10 +493,12 @@ ${coinInfo?.description && coinInfo.description !== "No description available." 
     const losers = await this.getTopLosers(10);
     
     if (!losers || !Array.isArray(losers)) {
-      return `❌ **Losers Data Unavailable** (${timestamp})`;
+      return `❌ **Losers Data Unavailable**
+      
+Sorry, I couldn't fetch the current market data. Please try again later.`;
     }
 
-    let response = `📉 **Top 10 24h Losers** (${timestamp})\n\n`;
+    let response = `📉 **Top 10 24h Losers**\n\n`;
     
     losers.forEach((coin: any, index: number) => {
       response += `${index + 1}. 💧 **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
@@ -508,10 +513,12 @@ ${coinInfo?.description && coinInfo.description !== "No description available." 
     const trending = await this.getTrendingCoins();
     
     if (!trending || !trending.coins) {
-      return `❌ **Trending Data Unavailable** (${timestamp})`;
+      return `❌ **Trending Data Unavailable**
+      
+Sorry, I couldn't fetch the trending coins data. Please try again later.`;
     }
 
-    let response = `🔥 **Trending Cryptocurrencies** (${timestamp})\n\n`;
+    let response = `🔥 **Trending Cryptocurrencies**\n\n`;
     
     trending.coins.slice(0, 10).forEach((item: any, index: number) => {
       const coin = item.item;
@@ -527,7 +534,9 @@ ${coinInfo?.description && coinInfo.description !== "No description available." 
     const sentiment = await this.getSentiment();
     
     if (!sentiment || !sentiment.data || !sentiment.data[0]) {
-      return `❌ **Sentiment Data Unavailable** (${timestamp})`;
+      return `❌ **Sentiment Data Unavailable**
+      
+Sorry, I couldn't fetch the current market sentiment data. Please try again later.`;
     }
 
     const data = sentiment.data[0];
@@ -540,7 +549,7 @@ ${coinInfo?.description && coinInfo.description !== "No description available." 
     else if (value >= 25) emoji = '😟';
     else emoji = '😨';
 
-    return `${emoji} **Fear & Greed Index** (${timestamp})
+    return `${emoji} **Fear & Greed Index**
 
 **Current Score:** ${value}/100
 **Classification:** ${classification.toUpperCase()}
@@ -733,12 +742,21 @@ How can I assist you with your crypto analysis today?`;
       'shib': 'shiba-inu', 'shiba': 'shiba-inu',
       'pepe': 'pepe', 'bonk': 'bonk',
       'xrp': 'ripple', 'ripple': 'ripple',
-      'bnb': 'binancecoin',
-      'usdt': 'tether', 'usdc': 'usd-coin'
+      'bnb': 'binancecoin', 'binance coin': 'binancecoin',
+      'usdt': 'tether', 'usdc': 'usd-coin',
+      'render': 'render-token', 'rndr': 'render-token',
+      'sui': 'sui', 'aptos': 'aptos', 'apt': 'aptos',
+      'arbitrum': 'arbitrum', 'arb': 'arbitrum',
+      'optimism': 'optimism', 'op': 'optimism',
+      'fantom': 'fantom', 'ftm': 'fantom',
+      'near': 'near', 'cosmos': 'cosmos', 'atom': 'cosmos'
     };
 
     // First check the hardcoded map for quick lookups
-    for (const [keyword, id] of Object.entries(coinMap)) {
+    // Sort by length descending to match longer phrases first
+    const sortedEntries = Object.entries(coinMap).sort((a, b) => b[0].length - a[0].length);
+    
+    for (const [keyword, id] of sortedEntries) {
       if (message.toLowerCase().includes(keyword)) {
         return id;
       }
@@ -746,12 +764,19 @@ How can I assist you with your crypto analysis today?`;
 
     // If not found in hardcoded map, search via API
     const words = message.toLowerCase().split(/\s+/);
-    for (const word of words) {
-      if (word.length >= 2) { // Only search for words with 2+ characters
-        const coinId = await this.searchCoin(word);
-        if (coinId) {
-          return coinId;
-        }
+    
+    // Try to find the main coin name (skip common words like "price", "of", "the", etc.)
+    const skipWords = ['price', 'of', 'the', 'what', 'is', 'show', 'me', 'get', 'tell', 'find', 'current', 'today', 'now'];
+    const relevantWords = words.filter(word => 
+      word.length >= 2 && 
+      !skipWords.includes(word) && 
+      !word.match(/^\d+$/) // Skip pure numbers
+    );
+    
+    for (const word of relevantWords) {
+      const coinId = await this.searchCoin(word);
+      if (coinId) {
+        return coinId;
       }
     }
     
