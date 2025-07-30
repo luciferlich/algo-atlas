@@ -122,16 +122,15 @@ const AIChat = () => {
 
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-5xl h-[85vh] bg-gradient-to-br from-gray-900 via-amber-900/20 to-black border border-amber-500/30 shadow-2xl">
-        <DialogHeader className="border-b border-amber-500/20 pb-4 mb-6">
-          <DialogTitle className="text-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
-              AlgoAtlas Neural AI
-            </span>
-          </DialogTitle>
-        </DialogHeader>
-        
-        <div className="flex flex-col h-full relative">
+      <DialogContent className="max-w-5xl h-[85vh] bg-gradient-to-br from-gray-900 via-amber-900/20 to-black border border-amber-500/30 shadow-2xl p-0">
+        <div className="flex flex-col h-full relative p-6">
+          <DialogHeader className="border-b border-amber-500/20 pb-4 mb-6">
+            <DialogTitle className="text-center">
+              <span className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+                AlgoAtlas Neural AI
+              </span>
+            </DialogTitle>
+          </DialogHeader>
           {/* Neural Network Background */}
           <div className="absolute inset-0 opacity-5">
             <svg className="w-full h-full" viewBox="0 0 400 300">
@@ -164,20 +163,15 @@ const AIChat = () => {
                 </div>
                 
                 {/* Text below */}
-                <div className="absolute top-40 left-1/2 transform -translate-x-1/2 text-center w-full max-w-md px-4">
+                <div className="absolute top-40 left-1/2 transform -translate-x-1/2 text-center">
                   <p className="text-amber-300 text-lg font-medium">Generating analysis...</p>
-                  <div className="flex items-center justify-center gap-1 mt-2">
-                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></div>
-                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '200ms'}}></div>
-                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{animationDelay: '400ms'}}></div>
-                  </div>
                 </div>
               </div>
             </div>
           )}
 
           {/* Chat Messages */}
-          <ScrollArea ref={scrollAreaRef} className="flex-1 p-6 mb-4 max-h-[55vh] overflow-y-auto">
+          <ScrollArea ref={scrollAreaRef} className="flex-1 mb-4 max-h-[55vh] overflow-y-auto">
             <div className="space-y-6 min-h-0">
               <AnimatePresence>
                 {messages.map((message) => (
@@ -252,7 +246,7 @@ const AIChat = () => {
           {/* Suggested Queries */}
           {messages.length === 1 && (
             <motion.div 
-              className="mb-6 px-6"
+              className="mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -275,7 +269,7 @@ const AIChat = () => {
           )}
 
           {/* Input Area */}
-          <div className="flex gap-3 p-6 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
+          <div className="flex gap-3 pt-4 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
             <div className="flex-1 relative">
               <Input
                 value={input}
