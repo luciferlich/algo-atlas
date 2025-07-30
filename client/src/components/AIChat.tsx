@@ -143,34 +143,32 @@ const AIChat = () => {
             </svg>
           </div>
           
-          {/* AI Status Indicator - Radiating Brain Animation */}
+          {/* AI Status Indicator - Large Radiating Brain Animation */}
           {isLoading && (
-            <div className="absolute inset-0 z-20 bg-black/90 backdrop-blur-md flex items-center justify-center">
-              <div className="relative">
-                {/* Radiating circles */}
+            <div className="absolute inset-0 z-20 bg-black/95 backdrop-blur-md flex items-center justify-center">
+              <div className="relative w-80 h-80 flex items-center justify-center">
+                {/* Multiple radiating waves */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full border border-amber-400/30 animate-ping"></div>
+                  <div className="w-32 h-32 rounded-full border-2 border-amber-400/40 animate-ping" style={{animationDuration: '2s'}}></div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full border border-amber-400/20 animate-ping" style={{animationDelay: '0.5s'}}></div>
+                  <div className="w-48 h-48 rounded-full border-2 border-amber-400/25 animate-ping" style={{animationDuration: '2.5s', animationDelay: '0.3s'}}></div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full border border-amber-400/10 animate-ping" style={{animationDelay: '1s'}}></div>
+                  <div className="w-64 h-64 rounded-full border border-amber-400/15 animate-ping" style={{animationDuration: '3s', animationDelay: '0.6s'}}></div>
                 </div>
-                
-                {/* Center brain icon with glow */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <Brain className="h-8 w-8 text-amber-400 animate-pulse" />
-                    <div className="absolute inset-0 h-8 w-8 text-amber-400/50 animate-pulse" style={{animationDelay: '0.3s'}}>
-                      <Brain className="h-8 w-8" />
-                    </div>
-                  </div>
+                  <div className="w-80 h-80 rounded-full border border-amber-400/10 animate-ping" style={{animationDuration: '3.5s', animationDelay: '0.9s'}}></div>
                 </div>
                 
-                {/* Text below */}
-                <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-center">
-                  <p className="text-amber-300 text-lg font-medium">Generating analysis...</p>
+                {/* Large center brain icon */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Brain className="h-16 w-16 text-amber-400 animate-pulse drop-shadow-[0_0_10px_rgba(245,158,11,0.8)]" style={{animationDuration: '1.5s'}} />
+                </div>
+                
+                {/* Text below with more spacing */}
+                <div className="absolute top-56 left-1/2 transform -translate-x-1/2 text-center">
+                  <p className="text-amber-300 text-xl font-medium">Generating analysis...</p>
                 </div>
               </div>
             </div>
