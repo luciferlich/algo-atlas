@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, TrendingUp, Newspaper, Loader2, Sparkles, Bot, Brain } from "lucide-react";
+import { Send, TrendingUp, Newspaper, Loader2, Sparkles, Bot, Brain, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from 'react-markdown';
 
@@ -16,6 +16,68 @@ interface Message {
   timestamp: Date;
   isPending?: boolean;
 }
+
+// Component for expandable content
+const ExpandableContent = ({ content }: { content: string }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Check if content has [Read More] marker
+  const hasReadMore = content.includes('📖 **[Read More]**');
+  
+  if (!hasReadMore) {
+    return <ReactMarkdown className="prose prose-invert max-w-none">{content}</ReactMarkdown>;
+  }
+  
+  // Split content at Read More marker
+  const parts = content.split('📖 **[Read More]** Click to expand full description:');
+  const shortContent = parts[0];
+  const fullContent = parts[1]?.split('\n\n').slice(1).join('\n\n') || '';
+  
+  return (
+    <div className="space-y-2">
+      <ReactMarkdown 
+        className="prose prose-invert max-w-none"
+        components={{
+          p: ({children}) => <p className="mb-2 last:mb-0">{children}</p>,
+          strong: ({children}) => <strong className="text-amber-300 font-semibold">{children}</strong>,
+          ul: ({children}) => <ul className="ml-4 space-y-1">{children}</ul>,
+          li: ({children}) => <li className="text-white/90">{children}</li>,
+          h3: ({children}) => <h3 className="text-amber-300 font-semibold text-base mb-1">{children}</h3>,
+          h2: ({children}) => <h2 className="text-amber-300 font-semibold text-lg mb-2">{children}</h2>,
+          a: ({children, href}) => <a href={href} className="text-amber-400 hover:text-amber-300 underline" target="_blank" rel="noopener noreferrer">{children}</a>
+        }}
+      >
+        {isExpanded ? content.replace('📖 **[Read More]** Click to expand full description:\n\n', '') : shortContent}
+      </ReactMarkdown>
+      
+      {!isExpanded && (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsExpanded(true)}
+          className="text-amber-400 hover:text-amber-300 hover:bg-amber-900/20 p-1 h-auto"
+        >
+          <span className="flex items-center gap-1 text-xs">
+            📖 Read More <ChevronDown className="h-3 w-3" />
+          </span>
+        </Button>
+      )}
+      
+      {isExpanded && (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsExpanded(false)}
+          className="text-amber-400 hover:text-amber-300 hover:bg-amber-900/20 p-1 h-auto"
+        >
+          <span className="flex items-center gap-1 text-xs">
+            Show Less <ChevronUp className="h-3 w-3" />
+          </span>
+        </Button>
+      )}
+    </div>
+  );
+};
 
 const AIChat = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -211,19 +273,7 @@ const AIChat = () => {
                         )}
                         <div className="flex-1 min-w-0">
                           <div className="text-sm text-white/90 leading-relaxed prose prose-invert prose-amber max-w-none">
-                            <ReactMarkdown
-                              components={{
-                                p: ({children}) => <p className="mb-2 last:mb-0">{children}</p>,
-                                strong: ({children}) => <strong className="text-amber-300 font-semibold">{children}</strong>,
-                                ul: ({children}) => <ul className="ml-4 space-y-1">{children}</ul>,
-                                li: ({children}) => <li className="text-white/90">{children}</li>,
-                                h3: ({children}) => <h3 className="text-amber-300 font-semibold text-base mb-1">{children}</h3>,
-                                h2: ({children}) => <h2 className="text-amber-300 font-semibold text-lg mb-2">{children}</h2>,
-                                a: ({children, href}) => <a href={href} className="text-amber-400 hover:text-amber-300 underline" target="_blank" rel="noopener noreferrer">{children}</a>
-                              }}
-                            >
-                              {message.content}
-                            </ReactMarkdown>
+                            <ExpandableContent content={message.content} />
                           </div>
                           <p className="text-xs text-amber-300/60 mt-2 flex items-center gap-1">
                             <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
@@ -290,26 +340,27 @@ const AIChat = () => {
             </motion.div>
           )}
 
-          {/* Input Area */}
-          <div className="flex gap-3 pt-4 mt-2 border-t border-amber-500/20 bg-gradient-to-r from-gray-900/50 to-amber-900/20 backdrop-blur-sm">
-            <div className="flex-1 relative">
-              <Input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Ask about crypto prices, news, or market analysis..."
-                className="bg-gray-900/80 border-amber-400/30 focus:border-amber-300/60 text-white placeholder:text-amber-300/50 rounded-xl backdrop-blur-sm h-12"
-                disabled={isLoading}
-              />
-
+          {/* Input Area - Fixed at bottom */}
+          <div className="flex-shrink-0 mt-6 pt-4 border-t border-amber-500/20">
+            <div className="flex gap-3">
+              <div className="flex-1 relative">
+                <Input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask about crypto prices, news, or market analysis..."
+                  className="bg-gray-900/80 border-amber-400/30 focus:border-amber-300/60 text-white placeholder:text-amber-300/50 rounded-xl backdrop-blur-sm h-12"
+                  disabled={isLoading}
+                />
+              </div>
+              <Button 
+                onClick={handleSendMessage}
+                disabled={!input.trim() || isLoading}
+                className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black shadow-lg shadow-amber-500/25 rounded-xl h-12 px-6 transition-all duration-300"
+              >
+                <Send className="h-5 w-5" />
+              </Button>
             </div>
-            <Button 
-              onClick={handleSendMessage}
-              disabled={!input.trim() || isLoading}
-              className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black shadow-lg shadow-amber-500/25 rounded-xl h-12 px-6 transition-all duration-300"
-            >
-              <Send className="h-5 w-5" />
-            </Button>
           </div>
         </div>
       </DialogContent>
