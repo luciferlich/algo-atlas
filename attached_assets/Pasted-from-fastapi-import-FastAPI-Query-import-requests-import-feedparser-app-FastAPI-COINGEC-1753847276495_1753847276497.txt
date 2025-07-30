@@ -1,0 +1,175 @@
+from fastapi import FastAPI, Query
+import requests
+import feedparser
+
+app = FastAPI()
+
+COINGECKO_API = "https://api.coingecko.com/api/v3"
+
+# Basic price and info
+@app.get("/price")
+def get_price(coin_id: str):
+    res = requests.get(f"{COINGECKO_API}/simple/price", params={
+        "ids": coin_id,
+        "vs_currencies": "usd",
+        "include_market_cap": "true",
+        "include_24hr_change": "true",
+        "include_last_updated_at": "true"
+    })
+    return res.json()
+
+@app.get("/desc")
+def coin_description(coin_id: str):
+    res = requests.get(f"{COINGECKO_API}/coins/{coin_id}")
+    if res.status_code != 200:
+        return {"error": "Coin not found"}
+    data = res.json()
+    return {
+        "name": data.get("name"),
+        "symbol": data.get("symbol"),
+        "description": data.get("description", {}).get("en", "No description available."),
+        "homepage": data.get("links", {}).get("homepage", [])[0]
+    }
+
+@app.get("/ath")
+def all_time_high(coin_id: str):
+    res = requests.get(f"{COINGECKO_API}/coins/{coin_id}")
+    if res.status_code != 200:
+        return {"error": "Coin not found"}
+    data = res.json()
+    return {
+        "ath": data.get("market_data", {}).get("ath", {}).get("usd"),
+        "ath_date": data.get("market_data", {}).get("ath_date", {}).get("usd")
+    }
+
+@app.get("/atl")
+def all_time_low(coin_id: str):
+    res = requests.get(f"{COINGECKO_API}/coins/{coin_id}")
+    if res.status_code != 200:
+        return {"error": "Coin not found"}
+    data = res.json()
+    return {
+        "atl": data.get("market_data", {}).get("atl", {}).get("usd"),
+        "atl_date": data.get("market_data", {}).get("atl_date", {}).get("usd")
+    }
+
+# Market movement and comparison
+@app.get("/top")
+def top_coins(limit: int = 10):
+    res = requests.get(f"{COINGECKO_API}/coins/markets", params={
+        "vs_currency": "usd",
+        "order": "market_cap_desc",
+        "per_page": limit,
+        "page": 1
+    })
+    return res.json()
+
+@app.get("/worst")
+def worst_performers(limit: int = 10):
+    res = requests.get(f"{COINGECKO_API}/coins/markets", params={
+        "vs_currency": "usd",
+        "order": "market_cap_asc",
+        "per_page": limit,
+        "page": 1
+    })
+    return res.json()
+
+@app.get("/gainers")
+def top_gainers(limit: int = 10):
+    res = requests.get(f"{COINGECKO_API}/coins/markets", params={
+        "vs_currency": "usd",
+        "order": "market_cap_desc",
+        "per_page": 100,
+        "page": 1
+    })
+    data = res.json()
+    sorted_data = sorted(data, key=lambda x: x["price_change_percentage_24h"] or 0, reverse=True)
+    return sorted_data[:limit]
+
+@app.get("/losers")
+def top_losers(limit: int = 10):
+    res = requests.get(f"{COINGECKO_API}/coins/markets", params={
+        "vs_currency": "usd",
+        "order": "market_cap_desc",
+        "per_page": 100,
+        "page": 1
+    })
+    data = res.json()
+    sorted_data = sorted(data, key=lambda x: x["price_change_percentage_24h"] or 0)
+    return sorted_data[:limit]
+
+@app.get("/trending")
+def trending_coins():
+    res = requests.get(f"{COINGECKO_API}/search/trending")
+    return res.json()
+
+@app.get("/compare")
+def compare_coins(coin1: str, coin2: str):
+    res1 = requests.get(f"{COINGECKO_API}/simple/price", params={"ids": coin1, "vs_currencies": "usd"})
+    res2 = requests.get(f"{COINGECKO_API}/simple/price", params={"ids": coin2, "vs_currencies": "usd"})
+    return {
+        coin1: res1.json().get(coin1),
+        coin2: res2.json().get(coin2)
+    }
+
+# Market sentiment (Fear & Greed Index)
+@app.get("/sentiment")
+def get_sentiment():
+    res = requests.get("https://api.alternative.me/fng/?limit=1")
+    return res.json()
+
+# Gas fees (Ethereum network)
+@app.get("/gas")
+def get_eth_gas():
+    res = requests.get("https://ethgas.watch/api/gas")
+    return res.json()
+
+# Bitcoin dominance
+@app.get("/dominance")
+def get_btc_dominance():
+    res = requests.get(f"{COINGECKO_API}/global")
+    data = res.json()
+    return {
+        "btc_dominance": data.get("data", {}).get("market_cap_percentage", {}).get("btc")
+    }
+
+# News (CoinDesk RSS)
+@app.get("/news")
+def get_news():
+    feed = feedparser.parse("https://feeds.feedburner.com/CoinDesk")
+    return [{"title": entry.title, "link": entry.link, "published": entry.published} for entry in feed.entries[:10]]
+
+# Order book with sentences
+@app.get("/checkob")
+def check_order_book(symbol: str = "BTCUSDT", limit: int = 5):
+    """
+    Returns human-readable sentences describing the top N buy and sell orders
+    from Binance's order book for the given symbol.
+    """
+    url = f"https://api.binance.com/api/v3/depth"
+    res = requests.get(url, params={"symbol": symbol.upper(), "limit": limit})
+    if res.status_code != 200:
+        return {"error": "Could not fetch order book."}
+    
+    data = res.json()
+    
+    buy_orders = [{"price": float(price), "quantity": float(qty)} for price, qty in data["bids"]]
+    sell_orders = [{"price": float(price), "quantity": float(qty)} for price, qty in data["asks"]]
+    
+    buy_sentences = []
+    for order in buy_orders:
+        buy_sentences.append(f"Buy order at ${order['price']:.2f} for {order['quantity']} units.")
+    
+    sell_sentences = []
+    for order in sell_orders:
+        sell_sentences.append(f"Sell order at ${order['price']:.2f} for {order['quantity']} units.")
+    
+    response_text = (
+        f"Top {limit} buy orders:\n" + "\n".join(buy_sentences) + 
+        f"\n\nTop {limit} sell orders:\n" + "\n".join(sell_sentences)
+    )
+    
+    return {
+        "symbol": symbol.upper(),
+        "order_book_summary": response_text
+    }
