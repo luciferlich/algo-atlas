@@ -400,7 +400,7 @@ Unable to fetch current price data. Please try again in a moment.`;
     }
 
     const coin = priceData[coinId];
-    const changeIcon = coin.usd_24h_change > 0 ? '📈' : '📉';
+    const changeIcon = coin.usd_24h_change > 0 ? '💹' : '📉';
     
     return `${changeIcon} **${coinId.charAt(0).toUpperCase() + coinId.slice(1)} Price** (${timestamp})
 
@@ -454,7 +454,7 @@ Unable to fetch current price data. Please try again in a moment.`;
     let response = `🏆 **Top 10 Cryptocurrencies by Market Cap** (${timestamp})\n\n`;
     
     topCoins.forEach((coin: any, index: number) => {
-      const changeIcon = coin.price_change_percentage_24h > 0 ? '📈' : '📉';
+      const changeIcon = coin.price_change_percentage_24h > 0 ? '💹' : '📉';
       response += `${index + 1}. ${changeIcon} **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
       response += `   Price: $${coin.current_price.toFixed(coin.current_price < 1 ? 6 : 2)}\n`;
       response += `   24h: ${coin.price_change_percentage_24h > 0 ? '+' : ''}${coin.price_change_percentage_24h?.toFixed(2) || 0}%\n`;
@@ -471,10 +471,10 @@ Unable to fetch current price data. Please try again in a moment.`;
       return `❌ **Gainers Data Unavailable** (${timestamp})`;
     }
 
-    let response = `📈 **Top 10 24h Gainers** (${timestamp})\n\n`;
+    let response = `💹 **Top 10 24h Gainers** (${timestamp})\n\n`;
     
     gainers.forEach((coin: any, index: number) => {
-      response += `${index + 1}. **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
+      response += `${index + 1}. 🔥 **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
       response += `   Price: $${coin.current_price.toFixed(coin.current_price < 1 ? 6 : 2)}\n`;
       response += `   24h Change: +${coin.price_change_percentage_24h?.toFixed(2) || 0}%\n\n`;
     });
@@ -492,7 +492,7 @@ Unable to fetch current price data. Please try again in a moment.`;
     let response = `📉 **Top 10 24h Losers** (${timestamp})\n\n`;
     
     losers.forEach((coin: any, index: number) => {
-      response += `${index + 1}. **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
+      response += `${index + 1}. 💧 **${coin.name} (${coin.symbol.toUpperCase()})**\n`;
       response += `   Price: $${coin.current_price.toFixed(coin.current_price < 1 ? 6 : 2)}\n`;
       response += `   24h Change: ${coin.price_change_percentage_24h?.toFixed(2) || 0}%\n\n`;
     });

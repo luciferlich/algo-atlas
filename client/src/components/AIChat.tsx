@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, TrendingUp, Newspaper, Loader2, Sparkles, Bot, Brain } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   id: string;
@@ -104,10 +105,14 @@ const AIChat = () => {
   };
 
   const suggestedQueries = [
-    "What's the current price of Bitcoin?",
-    "Latest Ethereum news",
-    "Solana price prediction",
-    "Crypto market news today"
+    "💰 Bitcoin price and analysis",
+    "📈 Top crypto gainers today", 
+    "😨 Market fear & greed index",
+    "⛽ Ethereum gas fees tracker",
+    "🔥 Trending cryptocurrencies",
+    "👑 Bitcoin dominance analysis",
+    "📊 BTC/ETH order book data",
+    "💼 Portfolio recommendations"
   ];
 
   return (
@@ -201,7 +206,21 @@ const AIChat = () => {
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-white/90 whitespace-pre-wrap leading-relaxed">{message.content}</p>
+                          <div className="text-sm text-white/90 leading-relaxed prose prose-invert prose-amber max-w-none">
+                            <ReactMarkdown
+                              components={{
+                                p: ({children}) => <p className="mb-2 last:mb-0">{children}</p>,
+                                strong: ({children}) => <strong className="text-amber-300 font-semibold">{children}</strong>,
+                                ul: ({children}) => <ul className="ml-4 space-y-1">{children}</ul>,
+                                li: ({children}) => <li className="text-white/90">{children}</li>,
+                                h3: ({children}) => <h3 className="text-amber-300 font-semibold text-base mb-1">{children}</h3>,
+                                h2: ({children}) => <h2 className="text-amber-300 font-semibold text-lg mb-2">{children}</h2>,
+                                a: ({children, href}) => <a href={href} className="text-amber-400 hover:text-amber-300 underline" target="_blank" rel="noopener noreferrer">{children}</a>
+                              }}
+                            >
+                              {message.content}
+                            </ReactMarkdown>
+                          </div>
                           <p className="text-xs text-amber-300/60 mt-2 flex items-center gap-1">
                             <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
                             {message.timestamp.toLocaleTimeString()}
@@ -250,8 +269,8 @@ const AIChat = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <p className="text-sm text-amber-300/70 mb-3 font-medium">Quick neural queries:</p>
-              <div className="grid grid-cols-2 gap-3">
+              <p className="text-sm text-amber-300/70 mb-3 font-medium">Comprehensive market intelligence:</p>
+              <div className="grid grid-cols-2 gap-2">
                 {suggestedQueries.map((query, index) => (
                   <Button
                     key={index}
