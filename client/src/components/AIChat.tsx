@@ -25,7 +25,21 @@ const ExpandableContent = ({ content }: { content: string }) => {
   const hasReadMore = content.includes('📖 **[Read More]**');
   
   if (!hasReadMore) {
-    return <ReactMarkdown className="prose prose-invert max-w-none">{content}</ReactMarkdown>;
+    return (
+      <ReactMarkdown 
+        components={{
+          p: ({children}) => <span className="block mb-2 last:mb-0">{children}</span>,
+          strong: ({children}) => <strong className="text-amber-300 font-semibold">{children}</strong>,
+          ul: ({children}) => <ul className="ml-4 space-y-1">{children}</ul>,
+          li: ({children}) => <li className="text-white/90">{children}</li>,
+          h3: ({children}) => <h3 className="text-amber-300 font-semibold text-base mb-1">{children}</h3>,
+          h2: ({children}) => <h2 className="text-amber-300 font-semibold text-lg mb-2">{children}</h2>,
+          a: ({children, href}) => <a href={href} className="text-amber-400 hover:text-amber-300 underline" target="_blank" rel="noopener noreferrer">{children}</a>
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    );
   }
   
   // Split content at Read More marker
@@ -36,9 +50,8 @@ const ExpandableContent = ({ content }: { content: string }) => {
   return (
     <div className="space-y-2">
       <ReactMarkdown 
-        className="prose prose-invert max-w-none"
         components={{
-          p: ({children}) => <p className="mb-2 last:mb-0">{children}</p>,
+          p: ({children}) => <span className="block mb-2 last:mb-0">{children}</span>,
           strong: ({children}) => <strong className="text-amber-300 font-semibold">{children}</strong>,
           ul: ({children}) => <ul className="ml-4 space-y-1">{children}</ul>,
           li: ({children}) => <li className="text-white/90">{children}</li>,
